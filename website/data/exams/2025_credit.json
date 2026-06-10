@@ -1,0 +1,607 @@
+{
+  "id": "2025_credit",
+  "year": 2025,
+  "title": "Database Systems Credit Final Exam 2025",
+  "totalMarks": 60,
+  "duration": "2 Hours",
+  "sections": [
+    {
+      "title": "Multiple Choice Questions",
+      "marks": 60,
+      "questions": [
+        {
+          "id": "2025-credit-q1",
+          "number": 1,
+          "type": "mcq",
+          "question": "In distributed database systems, if every node in the cluster runs the same DBMS software and can perform the same set of tasks, the nodes are called:",
+          "options": [
+            "Homogeneous Nodes",
+            "Heterogeneous Nodes",
+            "Symmetric Nodes",
+            "Asymmetric Nodes"
+          ],
+          "correctAnswer": "Homogeneous Nodes",
+          "explanation": "Homogeneous distributed databases use the same DBMS and schema on all nodes. Heterogeneous systems can use different schemas and DBMS software on different nodes.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-credit-q2",
+          "number": 2,
+          "type": "mcq",
+          "question": "Which term describes the property where users are not required to know where data is physically located or how tables are partitioned?",
+          "options": [
+            "Data consistency",
+            "Data integrity",
+            "Data transparency",
+            "Data homogeneity"
+          ],
+          "correctAnswer": "Data transparency",
+          "explanation": "Data transparency masks the physical details of a distributed database from users, allowing them to access data as if it were stored locally in a single, centralized database.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-credit-q3",
+          "number": 3,
+          "type": "mcq",
+          "question": "An allocation scheme where each node stores exactly one whole table, assuming enough storage space for that node, is known as:",
+          "options": [
+            "Horizontal partitioning",
+            "Naive data partitioning",
+            "Vertical partitioning",
+            "Hybrid partitioning"
+          ],
+          "correctAnswer": "Naive data partitioning",
+          "explanation": "Allocating whole tables to specific nodes without splitting them by row or column is a naive partitioning method.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-credit-q4",
+          "number": 4,
+          "type": "mcq",
+          "question": "Which concurrency problem occurs when one transaction updates a database item and then fails (aborts), but the update has already been read by another transaction?",
+          "options": [
+            "The Lost Update problem",
+            "Temporary Update (Dirty Read) problem",
+            "Unrepeatable Read problem",
+            "Incorrect Summary problem"
+          ],
+          "correctAnswer": "Temporary Update (Dirty Read) problem",
+          "explanation": "A dirty read occurs when a transaction reads data that has been modified by another transaction but not yet committed. If the modifying transaction aborts, the read value is invalid.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q5",
+          "number": 5,
+          "type": "mcq",
+          "question": "Given two transactions schedules S1: r2(X), w1(X); and S2: r1(Y), w2(X). Which schedule contains conflicting operations?",
+          "options": [
+            "Only S1",
+            "Only S2",
+            "Both S1 and S2",
+            "Neither S1 nor S2"
+          ],
+          "correctAnswer": "Both S1 and S2",
+          "explanation": "Two operations conflict if they belong to different transactions, access the same data item, and at least one is a write. In S1, r2(X) and w1(X) conflict on X. In S2, w2(X) conflicts with other operations on X. Thus, both contain conflicts.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q6",
+          "number": 6,
+          "type": "mcq",
+          "question": "A transaction schedule is conflict serializable if and only if its precedence (conflict) graph:",
+          "options": [
+            "Has cycles",
+            "Has no cycles",
+            "Has multiple root nodes",
+            "Is disconnected"
+          ],
+          "correctAnswer": "Has no cycles",
+          "explanation": "If the precedence graph (where edges denote conflicts between transactions) has no cycles, we can find a serial order using topological sort, meaning the schedule is conflict serializable.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q7",
+          "number": 7,
+          "type": "mcq",
+          "question": "Which ACID property guarantees that a transaction moves the database from one valid state satisfying all rules to another valid state?",
+          "options": [
+            "Atomicity",
+            "Consistency",
+            "Isolation",
+            "Durability"
+          ],
+          "correctAnswer": "Consistency",
+          "explanation": "Consistency preservation ensures that if a transaction executes to completion, it does not violate any database constraints or business rules.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q8",
+          "number": 8,
+          "type": "mcq",
+          "question": "A transaction is said to be ___ when all its database operations complete successfully and their changes are permanently saved.",
+          "options": [
+            "committed",
+            "rolled back",
+            "aborted",
+            "failed"
+          ],
+          "correctAnswer": "committed",
+          "explanation": "Commit is the SQL transaction command indicating that the transaction finished successfully and its changes are now durable and visible to others.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q9",
+          "number": 9,
+          "type": "mcq",
+          "question": "When transaction operations are executed simultaneously across multiple CPUs, it is called:",
+          "options": [
+            "Parallel Processing",
+            "Interleaved Processing",
+            "Common Processing",
+            "Delayed Processing"
+          ],
+          "correctAnswer": "Parallel Processing",
+          "explanation": "Parallel processing executes transaction instructions simultaneously on multiple processors. Interleaved processing schedules them on a single CPU via context switching.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-credit-q10",
+          "number": 10,
+          "type": "mcq",
+          "question": "Which of the following is NOT a primary problem that a distributed DBMS intends to solve?",
+          "options": [
+            "Single point of failure issues",
+            "Data redundancy",
+            "Geographic latency",
+            "Scalability limits"
+          ],
+          "correctAnswer": "Data redundancy",
+          "explanation": "Distributed DBMSs do not aim to eliminate data redundancy; instead, they intentionally manage redundant data (replicates) to improve fault tolerance and access speeds.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-credit-q11",
+          "number": 11,
+          "type": "mcq",
+          "question": "What characterizes a Shared Disk parallel database architecture?",
+          "options": [
+            "All processors share memory and disks",
+            "Processors have private memory and share access to common disks",
+            "Processors share memory but have local disks",
+            "Processors share neither memory nor disks"
+          ],
+          "correctAnswer": "Processors have private memory and share access to common disks",
+          "explanation": "Shared Disk architecture allows multiple processors to have independent memory but access a common set of storage disks over a bus/network.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-credit-q12",
+          "number": 12,
+          "type": "mcq",
+          "question": "Which partitioning strategy maps database keys to a ring structure to reduce reshuffling when nodes change?",
+          "options": [
+            "Consistent hashing",
+            "Logical partitioning",
+            "Physical partitioning",
+            "Deadlock-free partitioning"
+          ],
+          "correctAnswer": "Consistent hashing",
+          "explanation": "Consistent hashing organizes partition targets in a ring, mapping data keys to the closest active node. This minimizes data movement during scaling.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-credit-q13",
+          "number": 13,
+          "type": "mcq",
+          "question": "Which ACID property guarantees that concurrent transactions do not interfere with each other's execution?",
+          "options": [
+            "Atomicity",
+            "Consistency",
+            "Isolation",
+            "Durability"
+          ],
+          "correctAnswer": "Isolation",
+          "explanation": "Isolation ensures that the execution of a transaction is isolated from the effects of other concurrent transactions, preventing concurrency anomalies.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q14",
+          "number": 14,
+          "type": "mcq",
+          "question": "What is the initial step in mapping an ER diagram to a Relational Schema?",
+          "options": [
+            "Mapping of Weak Entity Types",
+            "Mapping of Regular Entity Types",
+            "Mapping of Binary Relationships",
+            "Mapping of Multivalued Attributes"
+          ],
+          "correctAnswer": "Mapping of Regular Entity Types",
+          "explanation": "The first step of ER-to-relational mapping is to create a relation for each strong (regular) entity type in the ER diagram.",
+          "topic": "ER-to-Relational Mapping",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-credit-q15",
+          "number": 15,
+          "type": "mcq",
+          "question": "A relationship mapped by adding a foreign key to the same table that references its own primary key is a/an:",
+          "options": [
+            "1:1 relationship",
+            "1:M relationship",
+            "M:N relationship",
+            "Recursive relationship"
+          ],
+          "correctAnswer": "Recursive relationship",
+          "explanation": "Recursive (or unary) relationships represent associations between occurrences of the same entity set, mapped by a self-referencing foreign key.",
+          "topic": "ER-to-Relational Mapping",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-credit-q16",
+          "number": 16,
+          "type": "mcq",
+          "question": "Which component acts as the intermediate layer defining mappings between the database storage and application programs?",
+          "options": [
+            "Metadata catalog",
+            "DBMS engine",
+            "View definition",
+            "Schema definition"
+          ],
+          "correctAnswer": "Schema definition",
+          "explanation": "The schema definition specifies the tables, types, and constraints, acting as the structural interface between programs and raw storage.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-credit-q17",
+          "number": 17,
+          "type": "mcq",
+          "question": "Which of the following is NOT a core feature/function of a Database Management System?",
+          "options": [
+            "Data storage and organization",
+            "Data definition and manipulation",
+            "Complex data analysis and statistical forecasting",
+            "Data security and authorization control"
+          ],
+          "correctAnswer": "Complex data analysis and statistical forecasting",
+          "explanation": "Statistical analysis, forecasting, and machine learning are typically handled by external application tools (BI tools/Python), not the core DBMS.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-credit-q18",
+          "number": 18,
+          "type": "mcq",
+          "question": "The ANSI-SPARC database model divides schemas into how many levels?",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "correctAnswer": "3",
+          "explanation": "The ANSI-SPARC architecture consists of 3 levels: External (user views), Conceptual (logical structures), and Internal (physical layouts).",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-credit-q19",
+          "number": 19,
+          "type": "mcq",
+          "question": "A distributed database differs from a parallel database because it relies on:",
+          "options": [
+            "Centralized data servers",
+            "Single points of failure",
+            "Data splitting and replication across network sites",
+            "Shared-memory multiprocessors"
+          ],
+          "correctAnswer": "Data splitting and replication across network sites",
+          "explanation": "Distributed database systems partition and replicate data across independent nodes connected by standard networks, whereas parallel databases run on integrated multiprocessors.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-credit-q20",
+          "number": 20,
+          "type": "mcq",
+          "question": "Mapping a 1:1 relationship type where one side is optional and the other is mandatory results in how many relations?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correctAnswer": "2",
+          "explanation": "We create 2 tables for the two entity types. The relationship is mapped by adding a foreign key to the table representing the mandatory entity side.",
+          "topic": "ER-to-Relational Mapping",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-credit-q21",
+          "number": 21,
+          "type": "mcq",
+          "question": "In mapping a 1:N relationship, if the N-side is mandatory, where must the foreign key be placed?",
+          "options": [
+            "In the table representing the 1-side",
+            "In the table representing the N-side",
+            "In an extra junction table",
+            "No foreign key is needed"
+          ],
+          "correctAnswer": "In the table representing the N-side",
+          "explanation": "In 1:N relationship mapping, the foreign key is always placed on the relation representing the N (many) side.",
+          "topic": "ER-to-Relational Mapping",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-credit-q22",
+          "number": 22,
+          "type": "mcq",
+          "question": "Which of the following is NOT an standard step in ER-to-Relational mapping?",
+          "options": [
+            "Mapping of Regular Entity Types",
+            "Mapping of Ternary Relationships",
+            "Mapping of Unary Relationships",
+            "Mapping of Derived Attributes"
+          ],
+          "correctAnswer": "Mapping of Derived Attributes",
+          "explanation": "Derived attributes are usually calculated on-the-fly and are typically not mapped to physical table columns in a relational schema.",
+          "topic": "ER-to-Relational Mapping",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-credit-q23",
+          "number": 23,
+          "type": "mcq",
+          "question": "If X → Y represents a functional dependency, this implies that:",
+          "options": [
+            "Y determines X",
+            "X and Y are candidate keys",
+            "X determines Y",
+            "Y must be a prime attribute"
+          ],
+          "correctAnswer": "X determines Y",
+          "explanation": "The FD constraint X → Y indicates that the value of attribute X uniquely determines the value of attribute Y.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q24",
+          "number": 24,
+          "type": "mcq",
+          "question": "What type of dependency is removed to decompose a relation into 3NF?",
+          "options": [
+            "Partial dependency",
+            "Transitive dependency",
+            "Multivalued dependency",
+            "Key dependency"
+          ],
+          "correctAnswer": "Transitive dependency",
+          "explanation": "3NF requires that the relation is in 2NF and has no transitive dependencies (where a non-key attribute determines another non-key attribute).",
+          "topic": "Normal Forms",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q25",
+          "number": 25,
+          "type": "mcq",
+          "question": "A prime attribute in normalization is defined as an attribute that is:",
+          "options": [
+            "Part of any candidate key",
+            "Capable of containing NULLs",
+            "A foreign key reference",
+            "Violating 2NF"
+          ],
+          "correctAnswer": "Part of any candidate key",
+          "explanation": "Attributes that belong to any candidate key of a relation are called prime attributes. Others are non-prime.",
+          "topic": "Normalization Concepts",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q26",
+          "number": 26,
+          "type": "mcq",
+          "question": "Which normal form requires that all non-prime attributes are fully functionally dependent on the entire primary key?",
+          "options": [
+            "1NF",
+            "2NF",
+            "3NF",
+            "BCNF"
+          ],
+          "correctAnswer": "2NF",
+          "explanation": "2NF requires that there are no partial dependencies (meaning no non-prime attribute is dependent on a proper subset of a composite primary key).",
+          "topic": "Normal Forms",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q27",
+          "number": 27,
+          "type": "mcq",
+          "question": "By normalizing relations in database design, a designer primarily minimizes:",
+          "options": [
+            "Database consistency checks",
+            "Data redundancy",
+            "Table column counts",
+            "Database integrity rules"
+          ],
+          "correctAnswer": "Data redundancy",
+          "explanation": "Normalization is the systematic process of reducing data redundancy to eliminate insert, update, and delete anomalies.",
+          "topic": "Normalization Concepts",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q28",
+          "number": 28,
+          "type": "mcq",
+          "question": "A functional dependency is a semantic constraint defined between or among:",
+          "options": [
+            "Tables",
+            "Rows",
+            "Relations",
+            "Attributes"
+          ],
+          "correctAnswer": "Attributes",
+          "explanation": "A functional dependency defines a constraint between two sets of attributes in a relation.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q29",
+          "number": 29,
+          "type": "mcq",
+          "question": "A database relation satisfies 1NF if and only if it does not contain:",
+          "options": [
+            "Determinants",
+            "Null values",
+            "Repeating groups",
+            "Primary keys"
+          ],
+          "correctAnswer": "Repeating groups",
+          "explanation": "1NF requires that all values in a table are atomic (indivisible) and that there are no repeating groups or composite/multivalued values in cells.",
+          "topic": "Normal Forms",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-credit-q30",
+          "number": 30,
+          "type": "mcq",
+          "question": "An EER entity type that encompasses one or more distinct subgroupings of its entity occurrences is a:",
+          "options": [
+            "Superclass",
+            "Subclass",
+            "Child class",
+            "Member class"
+          ],
+          "correctAnswer": "Superclass",
+          "explanation": "A superclass is the parent entity type containing subgroupings (subclasses) that inherit its attributes.",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-credit-q31",
+          "number": 31,
+          "type": "mcq",
+          "question": "A specialization lattice differs from a specialization hierarchy because a lattice allows:",
+          "options": [
+            "A subclass to have multiple parent superclasses",
+            "A subclass to have exactly one parent superclass",
+            "No inheritance constraints",
+            "Only single-level specializations"
+          ],
+          "correctAnswer": "A subclass to have multiple parent superclasses",
+          "explanation": "Lattices support multiple inheritance (shared subclasses having multiple superclasses). Hierarchies are restricted to single-inheritance tree structures.",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-credit-q32",
+          "number": 32,
+          "type": "mcq",
+          "question": "In a specialization hierarchy tree, a leaf node represents a subclass that:",
+          "options": [
+            "Has no subclasses of its own",
+            "Must participate in multiple inheritance",
+            "Cannot inherit attributes from parents",
+            "Has optional attributes only"
+          ],
+          "correctAnswer": "Has no subclasses of its own",
+          "explanation": "A leaf node is the terminal subclass at the bottom of the hierarchy tree.",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-credit-q33",
+          "number": 33,
+          "type": "mcq",
+          "question": "An entity can belong to at most one subclass if the specialization circle has the symbol:",
+          "options": [
+            "d (disjoint)",
+            "o (overlapping)",
+            "t (total)",
+            "m (mandatory)"
+          ],
+          "correctAnswer": "d (disjoint)",
+          "explanation": "The disjoint constraint ('d') specifies that subclasses are mutually exclusive, so an entity can belong to at most one subclass.",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-credit-q34",
+          "number": 34,
+          "type": "mcq",
+          "question": "A specialization structure where every subclass participates in exactly one subclass-superclass relationship is a:",
+          "options": [
+            "hierarchy",
+            "lattice",
+            "union",
+            "leaf"
+          ],
+          "correctAnswer": "hierarchy",
+          "explanation": "A specialization hierarchy restricts subclasses to having a single parent superclass.",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-credit-q35",
+          "number": 35,
+          "type": "mcq",
+          "question": "Which of the following is true regarding the SQL HAVING clause?",
+          "options": [
+            "It behaves like WHERE, but filters grouped summaries instead of individual rows",
+            "It is identical to the SELECT clause",
+            "It filters rows prior to the GROUP BY aggregation",
+            "It is used strictly with ORDER BY sorting"
+          ],
+          "correctAnswer": "It behaves like WHERE, but filters grouped summaries instead of individual rows",
+          "explanation": "HAVING filters aggregated groups. WHERE filters individual rows prior to grouping.",
+          "topic": "SQL Intermediate",
+          "chapterId": "ch5"
+        },
+        {
+          "id": "2025-credit-q36",
+          "number": 36,
+          "type": "mcq",
+          "question": "Which SQL command is used to add or modify columns in an existing table structure?",
+          "options": [
+            "CREATE",
+            "UPDATE",
+            "ALTER",
+            "SELECT"
+          ],
+          "correctAnswer": "ALTER",
+          "explanation": "ALTER TABLE is the DDL command used to alter an existing table's schema definition.",
+          "topic": "SQL Basics",
+          "chapterId": "ch4"
+        },
+        {
+          "id": "2025-credit-q37",
+          "number": 37,
+          "type": "mcq",
+          "question": "The primary role of the SQL GRANT command is to:",
+          "options": [
+            "Delete data records",
+            "Assign security access privileges to database users",
+            "Initialize table schemas",
+            "Optimize query indexes"
+          ],
+          "correctAnswer": "Assign security access privileges to database users",
+          "explanation": "GRANT is used to assign specific access permissions (SELECT, INSERT, UPDATE, etc.) to database user accounts.",
+          "topic": "SQL Basics",
+          "chapterId": "ch4"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,751 @@
+{
+  "id": "2025",
+  "year": 2025,
+  "title": "Database Systems Final Exam 2025",
+  "totalMarks": 60,
+  "duration": "2 Hours",
+  "sections": [
+    {
+      "title": "Multiple Choice & Practical Questions",
+      "marks": 60,
+      "questions": [
+        {
+          "id": "2025-q1",
+          "number": 1,
+          "type": "mcq",
+          "question": "Second Normal Form (2NF) is designed to eliminate which of the following anomalies/dependencies?",
+          "options": [
+            "Partial dependencies",
+            "Transitive dependencies",
+            "Repeating groups",
+            "Multi-valued dependencies"
+          ],
+          "correctAnswer": "Partial dependencies",
+          "explanation": "2NF removes partial dependencies, meaning every non-prime attribute must depend on the entire primary key, not just a subset of it.",
+          "topic": "Normal Forms",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q2",
+          "number": 2,
+          "type": "mcq",
+          "question": "If a relation R has a composite primary key {A, B} and a non-key attribute C depends only on A, this violates which normal form?",
+          "options": [
+            "1NF",
+            "2NF",
+            "3NF",
+            "BCNF"
+          ],
+          "correctAnswer": "2NF",
+          "explanation": "Because C depends on A (which is only part of the composite primary key {A, B}), this is a partial dependency, violating 2NF.",
+          "topic": "Normal Forms",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q3",
+          "number": 3,
+          "type": "mcq",
+          "question": "Which normal form is violated if a non-prime attribute is transitively dependent on a candidate key?",
+          "options": [
+            "1NF",
+            "2NF",
+            "3NF",
+            "BCNF"
+          ],
+          "correctAnswer": "3NF",
+          "explanation": "Third Normal Form (3NF) requires that no non-prime attribute is transitively dependent on any candidate key of the relation.",
+          "topic": "Normal Forms",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q4",
+          "number": 4,
+          "type": "mcq",
+          "question": "If A → B and B → C are two functional dependencies, then A → C is called a/an:",
+          "options": [
+            "Partial dependency",
+            "Transitive dependency",
+            "Full dependency",
+            "Atomic dependency"
+          ],
+          "correctAnswer": "Transitive dependency",
+          "explanation": "A dependency is transitive when a non-key attribute determines another non-key attribute, forming a chain A → B → C.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q5",
+          "number": 5,
+          "type": "mcq",
+          "question": "The storage of duplicate database data across several sites in a distributed system is called Data:",
+          "options": [
+            "Replication",
+            "Consistency",
+            "Isolation",
+            "Redundancy"
+          ],
+          "correctAnswer": "Replication",
+          "explanation": "Data replication in distributed databases stores identical data copies at different locations to improve fault tolerance and query processing speeds.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q6",
+          "number": 6,
+          "type": "mcq",
+          "question": "A functional dependency is a constraint representing a relationship between or among:",
+          "options": [
+            "Tables",
+            "Rows",
+            "Relations",
+            "Attributes"
+          ],
+          "correctAnswer": "Attributes",
+          "explanation": "A functional dependency describes a relationship between attributes in a relation, where one attribute's value uniquely determines another.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q7",
+          "number": 7,
+          "type": "mcq",
+          "question": "If a relation fails to satisfy the n-th normal form condition, what is its highest normal form?",
+          "options": [
+            "n - 1",
+            "n",
+            "n + 1",
+            "n + 2"
+          ],
+          "correctAnswer": "n - 1",
+          "explanation": "Because normal forms are progressive (e.g., to be in 3NF it must first be in 2NF), failing normal form 'n' means the relation satisfies at most 'n-1'.",
+          "topic": "Normalization Concepts",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q8",
+          "number": 8,
+          "type": "mcq",
+          "question": "Which of the following is a primary characteristic of a distributed database system?",
+          "options": [
+            "Centralized data control",
+            "Single-point of failure dependency",
+            "No network requirement",
+            "Data splitting (partitioning) and replication"
+          ],
+          "correctAnswer": "Data splitting (partitioning) and replication",
+          "explanation": "Distributed databases rely on splitting data among different nodes (partitioning) and mirroring data (replication) across a network.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q9",
+          "number": 9,
+          "type": "mcq",
+          "question": "Which distributed database architecture allows each node to have its own CPU, memory, and disk storage?",
+          "options": [
+            "Shared Everything",
+            "Shared Memory",
+            "Shared Disk",
+            "Shared Nothing"
+          ],
+          "correctAnswer": "Shared Nothing",
+          "explanation": "In a Shared Nothing architecture, nodes share neither CPU nor memory nor disk storage. They communicate strictly over network messages.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q10",
+          "number": 10,
+          "type": "mcq",
+          "question": "What is the key advantage of distributed database systems?",
+          "options": [
+            "Single-point failure protection",
+            "Improved data availability",
+            "Zero network overhead",
+            "Lowest hardware costs"
+          ],
+          "correctAnswer": "Improved data availability",
+          "explanation": "By replicating data across multiple nodes, the failure of one system doesn't cause overall downtime, improving availability.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q11",
+          "number": 11,
+          "type": "mcq",
+          "question": "What is a main drawback of naive database partitioning schemes?",
+          "options": [
+            "High horizontal scalability",
+            "Automatic key rebalancing",
+            "Uneven resource distribution (hot spots)",
+            "Extremely high disk costs"
+          ],
+          "correctAnswer": "Uneven resource distribution (hot spots)",
+          "explanation": "Simple partitioning schemes can direct a disproportionate amount of read/write requests to a single node, causing load imbalance.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q12",
+          "number": 12,
+          "type": "mcq",
+          "question": "What is the primary role of a coordinator node in centralized transaction management?",
+          "options": [
+            "Executing all transactions locally",
+            "Routing queries and managing commit/abort protocols",
+            "Storing redundant database backups",
+            "Generating randomized encryption keys"
+          ],
+          "correctAnswer": "Routing queries and managing commit/abort protocols",
+          "explanation": "The transaction coordinator manages the transaction lifecycle across distributed nodes, ensuring atomicity via protocols like Two-Phase Commit (2PC).",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q13",
+          "number": 13,
+          "type": "mcq",
+          "question": "Vertical partitioning splits a database table by its:",
+          "options": [
+            "Rows",
+            "Columns",
+            "Geographic regions",
+            "Replication nodes"
+          ],
+          "correctAnswer": "Columns",
+          "explanation": "Vertical partitioning splits a table by columns, grouping subsets of attributes into separate tables.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q14",
+          "number": 14,
+          "type": "mcq",
+          "question": "Which database partitioning strategy maps data keys onto a logical ring to manage storage?",
+          "options": [
+            "Range Partitioning",
+            "Hash Partitioning",
+            "Consistent Hashing",
+            "Naive Partitioning"
+          ],
+          "correctAnswer": "Consistent Hashing",
+          "explanation": "Consistent Hashing assigns keys and nodes to a circular logical ring. It reduces data migration when nodes are added or removed.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q15",
+          "number": 15,
+          "type": "mcq",
+          "question": "A database replication factor of 3 implies that:",
+          "options": [
+            "Data is stored across 3 different nodes",
+            "Data is encrypted with 3 key layers",
+            "Every query runs 3 times for security",
+            "A maximum of 3 concurrent transactions is allowed"
+          ],
+          "correctAnswer": "Data is stored across 3 different nodes",
+          "explanation": "A replication factor of 3 means there are three identical copies of the database records stored on three separate servers.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q16",
+          "number": 16,
+          "type": "mcq",
+          "question": "Parallel database systems differ from distributed database systems because they:",
+          "options": [
+            "Use standard internet connections",
+            "Cannot scale horizontally",
+            "Assume shared memory, disk, or local high-speed interconnects",
+            "Do not support database partitioning"
+          ],
+          "correctAnswer": "Assume shared memory, disk, or local high-speed interconnects",
+          "explanation": "Parallel databases use tightly integrated hardware systems (multiprocessors) with shared disk or memory. Distributed databases use independent nodes connected by standard networks.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q17",
+          "number": 17,
+          "type": "mcq",
+          "question": "What is a database transaction?",
+          "options": [
+            "A single SELECT query execution",
+            "A logical unit of work containing database operations",
+            "A scheduled database backup",
+            "A schema definition statement"
+          ],
+          "correctAnswer": "A logical unit of work containing database operations",
+          "explanation": "A database transaction is a collection of operations (read, write, delete) executed as a single logical unit of database work.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q18",
+          "number": 18,
+          "type": "mcq",
+          "question": "Which of the following is NOT an anomaly caused by concurrent transaction executions?",
+          "options": [
+            "Lost update problem",
+            "Dirty read problem",
+            "Incorrect summary problem",
+            "System log failure"
+          ],
+          "correctAnswer": "System log failure",
+          "explanation": "Lost updates, dirty reads, and incorrect summaries are classic concurrency issues. System log failure is a hardware or disk storage failure.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q19",
+          "number": 19,
+          "type": "mcq",
+          "question": "What does the letter 'A' in the ACID acronym stand for?",
+          "options": [
+            "Aggregation",
+            "Accessibility",
+            "Atomicity",
+            "Allocation"
+          ],
+          "correctAnswer": "Atomicity",
+          "explanation": "ACID stands for Atomicity, Consistency, Isolation, and Durability. 'A' represents Atomicity (all-or-nothing execution).",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q20",
+          "number": 20,
+          "type": "mcq",
+          "question": "What is the primary role of the system log file in transaction recovery?",
+          "options": [
+            "To record all transaction operations for undo and redo purposes",
+            "To cache SELECT query results for speed",
+            "To replicate database tables to external sites",
+            "To handle concurrent locking protocols"
+          ],
+          "correctAnswer": "To record all transaction operations for undo and redo purposes",
+          "explanation": "The transaction log keeps track of all database modifications to roll back aborted transactions (UNDO) or apply committed updates (REDO) after a crash.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q21",
+          "number": 21,
+          "type": "mcq",
+          "question": "Which ACID property guarantees that changes made by a committed transaction are permanently written to disk?",
+          "options": [
+            "Atomicity",
+            "Consistency",
+            "Isolation",
+            "Durability"
+          ],
+          "correctAnswer": "Durability",
+          "explanation": "Durability ensures that once a transaction has committed, its updates survive subsequent system failures.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q22",
+          "number": 22,
+          "type": "mcq",
+          "question": "Which database operation ensures log entries are written to persistent disk storage before transaction commits?",
+          "options": [
+            "Undo",
+            "Force-write (WAL)",
+            "Rollback",
+            "Redo"
+          ],
+          "correctAnswer": "Force-write (WAL)",
+          "explanation": "The Write-Ahead Logging (WAL) protocol forces transaction log entries to disk before actual data pages are committed.",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2025-q23",
+          "number": 23,
+          "type": "mcq",
+          "question": "Referential integrity requires that a foreign key value must match the primary key value in the parent relation or be:",
+          "options": [
+            "Null",
+            "Unique",
+            "Zero",
+            "Default"
+          ],
+          "correctAnswer": "Null",
+          "explanation": "Referential integrity states that a foreign key value must either point to an existing parent row or be set to NULL.",
+          "topic": "ER-to-Relational Mapping",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-q24",
+          "number": 24,
+          "type": "mcq",
+          "question": "Who is responsible for granting system access privileges and monitoring overall database utilization?",
+          "options": [
+            "System Analyst",
+            "Database Administrator (DBA)",
+            "Application Programmer",
+            "End User"
+          ],
+          "correctAnswer": "Database Administrator (DBA)",
+          "explanation": "The DBA handles user account creation, privilege assignment (GRANT/REVOKE), security, and performance tracking.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q25",
+          "number": 25,
+          "type": "mcq",
+          "question": "Which of the following is NOT considered a defining characteristic of a database system?",
+          "options": [
+            "Self-describing nature",
+            "Program-data independence",
+            "Support for multiple views",
+            "Data sharing with application program dependency"
+          ],
+          "correctAnswer": "Data sharing with application program dependency",
+          "explanation": "Database systems provide program-data independence. An application-dependent data structure is a characteristic of file systems.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q26",
+          "number": 26,
+          "type": "mcq",
+          "question": "The number of tuples (rows) in a relation table is referred to as its:",
+          "options": [
+            "Degree",
+            "Cardinality",
+            "Domain",
+            "Dimension"
+          ],
+          "correctAnswer": "Cardinality",
+          "explanation": "The number of rows in a table is its cardinality. The number of columns is its degree.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q27",
+          "number": 27,
+          "type": "mcq",
+          "question": "Which of the following is a classic disadvantage associated with file-based data management?",
+          "options": [
+            "Data redundancy and inconsistency",
+            "Efficient data sharing",
+            "Concurrent multi-user access",
+            "Rigid integrity constraints"
+          ],
+          "correctAnswer": "Data redundancy and inconsistency",
+          "explanation": "File processing systems store separate files for different programs, resulting in duplicated data (redundancy) and inconsistent updates.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q28",
+          "number": 28,
+          "type": "mcq",
+          "question": "Which parallel database architecture features separate CPUs and memory modules, but shares access to storage disks?",
+          "options": [
+            "Shared Disk",
+            "Shared Memory",
+            "Shared Nothing",
+            "Shared Everything"
+          ],
+          "correctAnswer": "Shared Disk",
+          "explanation": "In a Shared Disk system, each CPU has its own private memory, but all nodes share access to the storage disks over a high-speed network/bus.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q29",
+          "number": 29,
+          "type": "mcq",
+          "question": "For each attribute of a relation, the set of all allowed values is called its:",
+          "options": [
+            "Range",
+            "Set",
+            "Domain",
+            "Data type"
+          ],
+          "correctAnswer": "Domain",
+          "explanation": "The domain is the set of all valid values an attribute can assume (e.g., GPA domain is float between 0.0 and 4.0).",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q30",
+          "number": 30,
+          "type": "mcq",
+          "question": "If a member of a superclass can simultaneously belong to multiple subclasses in an EER diagram, which letter is written in the circle?",
+          "options": [
+            "d (disjoint)",
+            "o (overlapping)",
+            "t (total)",
+            "m (mandatory)"
+          ],
+          "correctAnswer": "o (overlapping)",
+          "explanation": "The disjoint constraint is represented by 'd' (at most one subclass). The overlapping constraint is represented by 'o' (can belong to multiple).",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-q31",
+          "number": 31,
+          "type": "mcq",
+          "question": "Which database characteristic ensures that updates to the physical storage structure do not affect application code?",
+          "options": [
+            "Program-data independence",
+            "Data isolation",
+            "Support for multiple views",
+            "Concurrency control"
+          ],
+          "correctAnswer": "Program-data independence",
+          "explanation": "Program-data independence allows changing data descriptions/storage without necessitating changes to the application programs.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q32",
+          "number": 32,
+          "type": "mcq",
+          "question": "Metadata in database systems refers to:",
+          "options": [
+            "Data about the data structure",
+            "Database system backups",
+            "User query logs",
+            "Physical disk sectors"
+          ],
+          "correctAnswer": "Data about the data structure",
+          "explanation": "Metadata contains the database descriptions (schemas, tables, indexes, constraints) stored in the DBMS system catalog.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q33",
+          "number": 33,
+          "type": "mcq",
+          "question": "Which of the following is NOT a component of a database environment?",
+          "options": [
+            "Application programs",
+            "DBMS software",
+            "Metadata catalog",
+            "Manual filing cabinets"
+          ],
+          "correctAnswer": "Manual filing cabinets",
+          "explanation": "A database system environment comprises data, hardware, software (DBMS), procedures, and users. Manual cabinets are non-digital.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2025-q34",
+          "number": 34,
+          "type": "mcq",
+          "question": "If an attribute AGE is calculated dynamically from DATE_OF_BIRTH, AGE is classified as a/an ___ attribute.",
+          "options": [
+            "Multi-valued",
+            "Single-valued",
+            "Composite",
+            "Derived"
+          ],
+          "correctAnswer": "Derived",
+          "explanation": "A derived attribute is one whose value is calculated from other database attributes, rather than being stored statically.",
+          "topic": "ER Concepts",
+          "chapterId": "ch2"
+        },
+        {
+          "id": "2025-q35",
+          "number": 35,
+          "type": "mcq",
+          "question": "Partial participation of an entity in a relationship is drawn in an E-R diagram using a:",
+          "options": [
+            "Single line",
+            "Double line",
+            "Dashed line",
+            "Circle"
+          ],
+          "correctAnswer": "Single line",
+          "explanation": "Partial participation is drawn with a single line. Total participation (existence dependency) is drawn with a double line.",
+          "topic": "ER Concepts",
+          "chapterId": "ch2"
+        },
+        {
+          "id": "2025-q36",
+          "number": 36,
+          "type": "mcq",
+          "question": "A specialization lattice is distinguished from a specialization hierarchy because a lattice allows:",
+          "options": [
+            "A subclass to have multiple parent superclasses",
+            "Subclasses to inherit no attributes",
+            "Only one subclass per superclass",
+            "Overlapping constraints only"
+          ],
+          "correctAnswer": "A subclass to have multiple parent superclasses",
+          "explanation": "A subclass in a lattice has multiple superclasses (shared subclass), resulting in multiple inheritance. A hierarchy only allows single parent inheritance.",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-q37",
+          "number": 37,
+          "type": "mcq",
+          "question": "In a specialization hierarchy, what is true about a leaf node?",
+          "options": [
+            "It has no subclasses",
+            "It cannot inherit attributes",
+            "It must have multiple parent superclasses",
+            "Its attributes are optional"
+          ],
+          "correctAnswer": "It has no subclasses",
+          "explanation": "A leaf node is the terminal node of the specialization hierarchy tree and has no further subclasses.",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-q38",
+          "number": 38,
+          "type": "mcq",
+          "question": "An entity can be a member of at most one subclass if the specialization satisfies the ___ constraint.",
+          "options": [
+            "Specialization",
+            "Generalization",
+            "Overlapping",
+            "Disjoint"
+          ],
+          "correctAnswer": "Disjoint",
+          "explanation": "The disjoint constraint ('d' in circle) prevents an entity from belonging to more than one subclass simultaneously.",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-q39",
+          "number": 39,
+          "type": "mcq",
+          "question": "A specialization structure where every subclass participates as a subclass in only one relationship is a:",
+          "options": [
+            "hierarchy",
+            "lattice",
+            "union",
+            "leaf"
+          ],
+          "correctAnswer": "hierarchy",
+          "explanation": "If every subclass has a single parent superclass, the structure is a specialization hierarchy (tree). If not, it is a lattice.",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2025-q40",
+          "number": 40,
+          "type": "mcq",
+          "question": "Which of the following describes the SQL HAVING clause?",
+          "options": [
+            "It behaves like WHERE, but filters grouped rows rather than individual table rows",
+            "It is identical to the SELECT clause",
+            "It filters raw table rows prior to aggregation",
+            "It sorts the query results in ascending order"
+          ],
+          "correctAnswer": "It behaves like WHERE, but filters grouped rows rather than individual table rows",
+          "explanation": "HAVING filters groups generated by the GROUP BY clause, whereas WHERE filters individual table rows.",
+          "topic": "SQL Intermediate",
+          "chapterId": "ch5"
+        },
+        {
+          "id": "2025-q41",
+          "number": 41,
+          "type": "mcq",
+          "question": "Which command is used to modify the structure of an existing database table?",
+          "options": [
+            "CREATE",
+            "UPDATE",
+            "ALTER",
+            "SELECT"
+          ],
+          "correctAnswer": "ALTER",
+          "explanation": "The ALTER TABLE command is used to add, modify, or drop columns/constraints in an existing table structure.",
+          "topic": "SQL Basics",
+          "chapterId": "ch4"
+        },
+        {
+          "id": "2025-q42",
+          "number": 42,
+          "type": "mcq",
+          "question": "What is the primary function of the SQL GRANT command?",
+          "options": [
+            "To initialize new tables",
+            "To assign access privileges to database users",
+            "To perform database transactions",
+            "To purge data records"
+          ],
+          "correctAnswer": "To assign access privileges to database users",
+          "explanation": "GRANT is a DCL (Data Control Language) command used to grant access privileges (SELECT, INSERT, etc.) to users.",
+          "topic": "SQL Basics",
+          "chapterId": "ch4"
+        },
+        {
+          "id": "2025-q43",
+          "number": 43,
+          "type": "mcq",
+          "question": "Based on the Order Schema (Customers, Orders, OrderItem), write the query to count the number of orders placed by customer 'Sara':",
+          "options": [
+            "SELECT COUNT(*) FROM Orders JOIN Customers ON Orders.CustomerID = Customers.CustomerID WHERE Customers.Name = 'Sara';",
+            "SELECT COUNT(*) FROM Orders WHERE CustomerID = 'Sara';",
+            "SELECT COUNT(*) FROM Orders, Customers WHERE Name = 'Sara';",
+            "SELECT COUNT(OrderID) FROM Orders WHERE Name = 'Sara';"
+          ],
+          "correctAnswer": "SELECT COUNT(*) FROM Orders JOIN Customers ON Orders.CustomerID = Customers.CustomerID WHERE Customers.Name = 'Sara';",
+          "explanation": "We join Orders and Customers on CustomerID, filter by Customers.Name = 'Sara', and count the resulting order tuples.",
+          "topic": "SQL Intermediate",
+          "chapterId": "ch5"
+        },
+        {
+          "id": "2025-q44",
+          "number": 44,
+          "type": "mcq",
+          "question": "Based on the Order Schema, write the query to find customer names who have never placed any orders:",
+          "options": [
+            "SELECT Name FROM Customers WHERE CustomerID NOT IN (SELECT CustomerID FROM Orders);",
+            "SELECT Name FROM Customers JOIN Orders ON Customers.CustomerID = Orders.CustomerID;",
+            "SELECT Name FROM Customers WHERE Orders IS NULL;",
+            "SELECT Name FROM Customers WHERE CustomerID = NULL;"
+          ],
+          "correctAnswer": "SELECT Name FROM Customers WHERE CustomerID NOT IN (SELECT CustomerID FROM Orders);",
+          "explanation": "We select Customers whose CustomerID is not present in the Orders table, signifying they have placed zero orders.",
+          "topic": "SQL Subqueries",
+          "chapterId": "ch7"
+        },
+        {
+          "id": "2025-q45",
+          "number": 45,
+          "type": "mcq",
+          "question": "Based on the Order Schema, write the query to find product names that have never been ordered:",
+          "options": [
+            "SELECT ProductName FROM Products WHERE ProductID NOT IN (SELECT ProductID FROM OrderItem);",
+            "SELECT ProductName FROM Products WHERE ProductID = NULL;",
+            "SELECT ProductName FROM Products JOIN OrderItem ON Products.ProductID = OrderItem.ProductID;",
+            "SELECT ProductName FROM Products WHERE ProductID IN (SELECT ProductID FROM OrderItem);"
+          ],
+          "correctAnswer": "SELECT ProductName FROM Products WHERE ProductID NOT IN (SELECT ProductID FROM OrderItem);",
+          "explanation": "A product is unordered if its ProductID does not exist in the OrderItem junction table.",
+          "topic": "SQL Subqueries",
+          "chapterId": "ch7"
+        },
+        {
+          "id": "2025-q46",
+          "number": 46,
+          "type": "mcq",
+          "question": "Based on the Order Schema, write the query to find all OrderIDs that have a total order value greater than $500:",
+          "options": [
+            "SELECT OrderID FROM OrderItem GROUP BY OrderID HAVING SUM(Quantity * Price) > 500;",
+            "SELECT OrderID FROM OrderItem WHERE Quantity * Price > 500;",
+            "SELECT OrderID FROM Orders WHERE TotalAmount > 500;",
+            "SELECT OrderID FROM OrderItem GROUP BY OrderID WHERE SUM(Price) > 500;"
+          ],
+          "correctAnswer": "SELECT OrderID FROM OrderItem GROUP BY OrderID HAVING SUM(Quantity * Price) > 500;",
+          "explanation": "We group the OrderItem table by OrderID, calculate the sum of Quantity * Price for each order, and filter using HAVING SUM(...) > 500.",
+          "topic": "SQL Intermediate",
+          "chapterId": "ch5"
+        }
+      ]
+    }
+  ]
+}

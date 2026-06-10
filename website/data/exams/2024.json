@@ -1,0 +1,976 @@
+{
+  "id": "2024",
+  "year": 2024,
+  "title": "Database Systems Final Exam 2024",
+  "model": "Model B",
+  "totalMarks": 60,
+  "duration": "2 Hours",
+  "sections": [
+    {
+      "title": "Multiple Choice Questions",
+      "marks": 60,
+      "questions": [
+        {
+          "id": "2024-q1",
+          "number": 1,
+          "type": "mcq",
+          "question": "Which of the following is a procedural query language in DBMS, which describes the procedure to obtain the result?",
+          "options": [
+            "SQL",
+            "Relational Algebra",
+            "DDL",
+            "DML"
+          ],
+          "correctAnswer": "Relational Algebra",
+          "explanation": "Relational algebra is a procedural query language because it specifies a sequence of operations to compute the result. SQL, on the other hand, is non-procedural.",
+          "topic": "Relational Algebra",
+          "chapterId": "ch9"
+        },
+        {
+          "id": "2024-q2",
+          "number": 2,
+          "type": "mcq",
+          "question": "The Union operation (∪) is:",
+          "options": [
+            "Commutative",
+            "Requires union compatibility",
+            "Both commutative and requires union compatibility",
+            "None of them"
+          ],
+          "correctAnswer": "Both commutative and requires union compatibility",
+          "explanation": "The Union operation is commutative (R ∪ S = S ∪ R) and is only defined if the operand relations are union-compatible (same degree and compatible domains).",
+          "topic": "Relational Algebra Operators",
+          "chapterId": "ch9"
+        },
+        {
+          "id": "2024-q3",
+          "number": 3,
+          "type": "mcq",
+          "question": "In Relational Algebra, the Rename operation is denoted by the symbol:",
+          "options": [
+            "σ (sigma)",
+            "π (pi)",
+            "⨝ (join)",
+            "ρ (rho)"
+          ],
+          "correctAnswer": "ρ (rho)",
+          "explanation": "The Rename operation is represented by the Greek letter rho (ρ). Sigma (σ) is for selection, pi (π) is for projection, and ⨝ is for join.",
+          "topic": "Relational Algebra Operators",
+          "chapterId": "ch9"
+        },
+        {
+          "id": "2024-q4",
+          "number": 4,
+          "type": "mcq",
+          "question": "The operation that is applied to a single relation is called:",
+          "options": [
+            "Unary",
+            "Binary",
+            "Set",
+            "All of them"
+          ],
+          "correctAnswer": "Unary",
+          "explanation": "Unary operations, such as selection (σ) and projection (π), apply to exactly one input relation. Join (⨝) and Cartesian product (×) are binary operations.",
+          "topic": "Relational Algebra Operators",
+          "chapterId": "ch9"
+        },
+        {
+          "id": "2024-q5",
+          "number": 5,
+          "type": "mcq",
+          "question": "We can always combine a cascade of SELECT operations into a single SELECT operation with:",
+          "options": [
+            "OR",
+            "AND",
+            "NOT",
+            "XOR"
+          ],
+          "correctAnswer": "AND",
+          "explanation": "A sequence of selection operations σ_A(σ_B(R)) is equivalent to a single selection operation σ_{A AND B}(R) using the logical conjunction AND.",
+          "topic": "Query Optimization",
+          "chapterId": "ch9"
+        },
+        {
+          "id": "2024-q6",
+          "number": 6,
+          "type": "mcq",
+          "question": "Which of the following is the inverse operation of the Cartesian product?",
+          "options": [
+            "Join",
+            "Difference",
+            "Division",
+            "Projection"
+          ],
+          "correctAnswer": "Division",
+          "explanation": "Relational division (÷) is mathematically defined as the inverse of the Cartesian product (×).",
+          "topic": "Relational Algebra Operators",
+          "chapterId": "ch9"
+        },
+        {
+          "id": "2024-q7",
+          "number": 7,
+          "type": "mcq",
+          "question": "Normalization of a Database is achieved by following a set of rules called:",
+          "options": [
+            "forms",
+            "constraints",
+            "keys",
+            "policies"
+          ],
+          "correctAnswer": "forms",
+          "explanation": "Database normalization is the process of structuring a database in accordance with a series of so-called 'normal forms' (1NF, 2NF, 3NF, BCNF) to reduce redundancy.",
+          "topic": "Normalization Concepts",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2024-q8",
+          "number": 8,
+          "type": "mcq",
+          "question": "If X is a candidate key of the relation (R), then:",
+          "options": [
+            "R → X",
+            "X → R",
+            "Both R → X and X → R",
+            "None of them"
+          ],
+          "correctAnswer": "X → R",
+          "explanation": "By definition, a candidate key X functionally determines all attributes in the relation (represented by R).",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2024-q9",
+          "number": 9,
+          "type": "mcq",
+          "question": "The degree to which the Relation has been normalized refers to the ___ normal form condition it meets.",
+          "options": [
+            "minimum",
+            "lowest",
+            "highest",
+            "All of them"
+          ],
+          "correctAnswer": "highest",
+          "explanation": "A relation is described as being in a certain normal form if it meets the requirements of that normal form and all lower normal forms. Its level of normalization refers to the highest form it meets.",
+          "topic": "Normalization Concepts",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2024-q10",
+          "number": 10,
+          "type": "mcq",
+          "question": "A relation with a single-attribute primary key is automatically in at least:",
+          "options": [
+            "1NF",
+            "2NF",
+            "3NF",
+            "4NF"
+          ],
+          "correctAnswer": "2NF",
+          "explanation": "A relation violates 2NF if it has partial dependencies (where a non-key attribute depends on part of a composite key). If the key has only one attribute, partial dependencies are impossible, so it is at least in 2NF.",
+          "topic": "Normal Forms",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2024-q11",
+          "number": 11,
+          "type": "mcq",
+          "question": "If A → B and B → C are two functional dependencies, then A → C is called a ___ dependency.",
+          "options": [
+            "Partial",
+            "Transitive",
+            "Full",
+            "None of the above"
+          ],
+          "correctAnswer": "Transitive",
+          "explanation": "A transitive dependency occurs when an attribute is indirectly determined by the primary key through another non-key attribute (e.g., A → B and B → C implies A → C).",
+          "topic": "Functional Dependencies",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2024-q12",
+          "number": 12,
+          "type": "mcq",
+          "question": "Given the functional dependencies in relation R(A, B, C, D): AB → C, AC → D. What is the primary key?",
+          "options": [
+            "A",
+            "B",
+            "A & B",
+            "A & C"
+          ],
+          "correctAnswer": "A & B",
+          "explanation": "Since AB → C, the attributes {A, B} can determine C. Once we have C (and we already have A), the dependency AC → D gives us D. Thus, {A, B} determines {A, B, C, D} and is the candidate/primary key.",
+          "topic": "Keys Identification",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2024-q13",
+          "number": 13,
+          "type": "mcq",
+          "question": "Given the functional dependencies in relation R(A, B, C, D): AB → C, AB → D. What is the highest normal form of R?",
+          "options": [
+            "1NF",
+            "2NF",
+            "3NF",
+            "BCNF"
+          ],
+          "correctAnswer": "BCNF",
+          "explanation": "The candidate key is AB. The only non-trivial functional dependencies are AB → C and AB → D. For both FDs, the left-hand side (AB) is a superkey. Therefore, R is in BCNF.",
+          "topic": "Normal Forms",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2024-q14",
+          "number": 14,
+          "type": "mcq",
+          "question": "If a relation fails to satisfy the 3NF condition, then its highest normal form will be:",
+          "options": [
+            "1NF",
+            "2NF",
+            "3NF",
+            "4NF"
+          ],
+          "correctAnswer": "2NF",
+          "explanation": "Normal forms are hierarchical (1NF ⊂ 2NF ⊂ 3NF ⊂ BCNF). If a relation satisfies 2NF but fails 3NF, its highest normal form is 2NF.",
+          "topic": "Normal Forms",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2024-q15",
+          "number": 15,
+          "type": "mcq",
+          "question": "If every non-primary-key attribute is fully functionally dependent on the primary key, then the relation is in:",
+          "options": [
+            "1NF",
+            "2NF",
+            "3NF",
+            "4NF"
+          ],
+          "correctAnswer": "2NF",
+          "explanation": "Second Normal Form (2NF) requires that the relation is in 1NF and contains no partial dependencies, meaning every non-prime attribute must be fully functionally dependent on the primary key.",
+          "topic": "Normal Forms",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2024-q16",
+          "number": 16,
+          "type": "mcq",
+          "question": "The DBMS backs up the data automatically and can ___ it if any data loss happens.",
+          "options": [
+            "Recover",
+            "Copy",
+            "Maintain",
+            "Retrieve"
+          ],
+          "correctAnswer": "Recover",
+          "explanation": "The recovery subsystem of a DBMS is responsible for restoring the database to a consistent state in the event of a system failure or data loss.",
+          "topic": "DBMS Advantages",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q17",
+          "number": 17,
+          "type": "mcq",
+          "question": "A/An ___ is a group of objects with the same properties, which are identified by the enterprise as having an independent existence.",
+          "options": [
+            "Entity type",
+            "Attribute type",
+            "Relationship type",
+            "None of them"
+          ],
+          "correctAnswer": "Entity type",
+          "explanation": "An entity type defines a set of entities that share the same attributes and have an independent existence within the real-world domain being modeled.",
+          "topic": "ER Concepts",
+          "chapterId": "ch2"
+        },
+        {
+          "id": "2024-q18",
+          "number": 18,
+          "type": "mcq",
+          "question": "A/An ___ key references a related table through the primary key of that related table.",
+          "options": [
+            "Primary",
+            "Foreign",
+            "Candidate",
+            "Super"
+          ],
+          "correctAnswer": "Foreign",
+          "explanation": "A foreign key is a field (or collection of fields) in one table that uniquely identifies a row of another table (or the same table) by referencing a primary key.",
+          "topic": "ER-to-Relational Mapping",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2024-q19",
+          "number": 19,
+          "type": "mcq",
+          "question": "A referential integrity constraint requires that a foreign key value must either match a primary key value in the referenced relation or be:",
+          "options": [
+            "Zero",
+            "Unique",
+            "Null",
+            "Empty string"
+          ],
+          "correctAnswer": "Null",
+          "explanation": "Referential integrity requires that every foreign key value must match an existing primary key value in the target table, or be set to NULL (if permitted by the column definition).",
+          "topic": "ER-to-Relational Mapping",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2024-q20",
+          "number": 20,
+          "type": "mcq",
+          "question": "___ attributes are those that consist of a hierarchy of sub-attributes.",
+          "options": [
+            "Derived",
+            "Multi-valued",
+            "Composite",
+            "Simple"
+          ],
+          "correctAnswer": "Composite",
+          "explanation": "Composite attributes can be divided into smaller, independent sub-attributes (e.g., Address can be split into Street, City, State, and Zip Code).",
+          "topic": "ER Concepts",
+          "chapterId": "ch2"
+        },
+        {
+          "id": "2024-q21",
+          "number": 21,
+          "type": "mcq",
+          "question": "A/An ___ is used to define the overall design and structure of the database.",
+          "options": [
+            "Database Schema",
+            "Database Instance",
+            "Application Program",
+            "DML Query"
+          ],
+          "correctAnswer": "Database Schema",
+          "explanation": "The database schema is the description of a database's structure, including tables, columns, constraints, and relationships. It rarely changes once defined.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q22",
+          "number": 22,
+          "type": "mcq",
+          "question": "A/An ___ relationship is one in which a relationship exists between occurrences of the same entity set.",
+          "options": [
+            "Unary",
+            "Binary",
+            "Ternary",
+            "Bi-directional"
+          ],
+          "correctAnswer": "Unary",
+          "explanation": "A unary relationship (also known as a recursive relationship) connects occurrences of the same entity type (e.g., an Employee entity participating in a 'Supervises' relationship with another Employee).",
+          "topic": "ER Concepts",
+          "chapterId": "ch2"
+        },
+        {
+          "id": "2024-q23",
+          "number": 23,
+          "type": "mcq",
+          "question": "In a base relation, no attribute of a primary key can be null. This refers to ___ integrity.",
+          "options": [
+            "Primary",
+            "Referential",
+            "Entity",
+            "Domain"
+          ],
+          "correctAnswer": "Entity",
+          "explanation": "The entity integrity rule states that no primary key attribute (or component of a composite primary key) can contain a NULL value because it is used to uniquely identify tuples.",
+          "topic": "SQL Constraints",
+          "chapterId": "ch4"
+        },
+        {
+          "id": "2024-q24",
+          "number": 24,
+          "type": "mcq",
+          "question": "In EER modeling, the existence of at least one shared subclass (a subclass with multiple superclasses) leads to a:",
+          "options": [
+            "union",
+            "category",
+            "specialization hierarchy",
+            "specialization lattice"
+          ],
+          "correctAnswer": "specialization lattice",
+          "explanation": "A subclass with multiple superclasses is a shared subclass. A specialization structure containing shared subclasses is called a specialization lattice.",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2024-q25",
+          "number": 25,
+          "type": "mcq",
+          "question": "A ___ is a collection of programs that enable users to create and maintain databases.",
+          "options": [
+            "DBA",
+            "ACID",
+            "Data Dictionary",
+            "DBMS"
+          ],
+          "correctAnswer": "DBMS",
+          "explanation": "A Database Management System (DBMS) is a general-purpose software system that facilitates defining, constructing, manipulating, and sharing databases among users.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q26",
+          "number": 26,
+          "type": "mcq",
+          "question": "___ is the process of minimizing the differences between entities by identifying their common characteristics.",
+          "options": [
+            "Specialization",
+            "Generalization",
+            "Normalization",
+            "Aggregation"
+          ],
+          "correctAnswer": "Generalization",
+          "explanation": "Generalization is the bottom-up process of defining a generalized superclass from multiple existing subclasses by grouping their shared attributes.",
+          "topic": "Enhanced ER",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2024-q27",
+          "number": 27,
+          "type": "mcq",
+          "question": "Who is responsible for authorizing access to the database, coordinating and monitoring its use?",
+          "options": [
+            "DBA (Database Administrator)",
+            "Data Analyst",
+            "Application Programmer",
+            "End User"
+          ],
+          "correctAnswer": "DBA (Database Administrator)",
+          "explanation": "The Database Administrator (DBA) is responsible for authorization management, security, access privileges, performance monitoring, and system resource acquisition.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q28",
+          "number": 28,
+          "type": "mcq",
+          "question": "A virtual relation that does not physically exist in the database but is generated dynamically when a user queries it is called a:",
+          "options": [
+            "Base relation",
+            "Snapshot",
+            "Query",
+            "View"
+          ],
+          "correctAnswer": "View",
+          "explanation": "A view is a virtual relation that is not physically stored on disk, but is represented by a query definition that runs when the view is referenced.",
+          "topic": "SQL Views",
+          "chapterId": "ch4"
+        },
+        {
+          "id": "2024-q29",
+          "number": 29,
+          "type": "mcq",
+          "question": "___ is the ability of the database to allow multiple users to access the same records simultaneously without conflicts.",
+          "options": [
+            "DB Security",
+            "DB Recovery",
+            "DB Integrity",
+            "Concurrency Control"
+          ],
+          "correctAnswer": "Concurrency Control",
+          "explanation": "Concurrency control is a mechanism used by DBMS to coordinate simultaneous transaction executions without interfering with one another or causing data inconsistency.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q30",
+          "number": 30,
+          "type": "mcq",
+          "question": "Mapping a 1:M relationship type (such as Employee Has Computer, where an Employee can own multiple computers) yields how many relations?",
+          "options": [
+            "One",
+            "Two",
+            "Three",
+            "Four"
+          ],
+          "correctAnswer": "Two",
+          "explanation": "A 1:M relationship is mapped by adding a foreign key on the many (M) side table pointing to the primary key of the one (1) side table. No extra table is created. Thus, only the 2 relations representing the two entities are needed.",
+          "topic": "ER-to-Relational Mapping",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2024-q31",
+          "number": 31,
+          "type": "mcq",
+          "question": "Mapping an M:N relationship type (such as Student Takes Course) yields how many relations?",
+          "options": [
+            "One",
+            "Two",
+            "Three",
+            "Four"
+          ],
+          "correctAnswer": "Three",
+          "explanation": "Mapping a many-to-many (M:N) relationship requires creating a new relation (junction table) containing foreign keys from both participating entity relations, yielding a total of 3 relations.",
+          "topic": "ER-to-Relational Mapping",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2024-q32",
+          "number": 32,
+          "type": "mcq",
+          "question": "In ER-to-Relational Mapping, a Many-to-Many (M:N) relationship is handled by generating a/an:",
+          "options": [
+            "ignored relationship",
+            "additional relation (junction table)",
+            "additional attribute on one side",
+            "merge of the two relations"
+          ],
+          "correctAnswer": "additional relation (junction table)",
+          "explanation": "M:N relationships cannot be represented by a foreign key on either side without duplicating rows. A separate join table is generated.",
+          "topic": "ER-to-Relational Mapping",
+          "chapterId": "ch3"
+        },
+        {
+          "id": "2024-q33",
+          "number": 33,
+          "type": "mcq",
+          "question": "In the ANSI/SPARC 3-level architecture, the ___ level deals with the individual user views.",
+          "options": [
+            "external",
+            "natural",
+            "conceptual",
+            "physical"
+          ],
+          "correctAnswer": "external",
+          "explanation": "The 3 levels are: Internal (physical storage), Conceptual (global logical view), and External (individual user views).",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q34",
+          "number": 34,
+          "type": "mcq",
+          "question": "Who is responsible for deciding how the logical database design is to be physically realized in storage?",
+          "options": [
+            "DBA",
+            "Data Analyst",
+            "DB Analyst",
+            "Database Designer"
+          ],
+          "correctAnswer": "Database Designer",
+          "explanation": "The database designer is responsible for choosing the data model, tables, indexes, constraints, and how the conceptual model maps to physical storage structures.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q35",
+          "number": 35,
+          "type": "mcq",
+          "question": "The number of attributes (columns) in a relation table is referred to as its:",
+          "options": [
+            "class",
+            "domain",
+            "cardinality",
+            "degree"
+          ],
+          "correctAnswer": "degree",
+          "explanation": "The degree of a relation is its column count. The cardinality is its tuple/row count.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q36",
+          "number": 36,
+          "type": "mcq",
+          "question": "If {A} is the candidate key of a relation R(A, B, C, d), then the set {A, B} is best described as a:",
+          "options": [
+            "Primary key",
+            "Candidate key",
+            "Super key",
+            "Foreign key"
+          ],
+          "correctAnswer": "Super key",
+          "explanation": "A superkey is any set of attributes that includes a candidate key. Since {A} is a candidate key, {A, B} is a superkey (it is unique but not minimal).",
+          "topic": "Keys Identification",
+          "chapterId": "ch8"
+        },
+        {
+          "id": "2024-q37",
+          "number": 37,
+          "type": "mcq",
+          "question": "Which SQL clause is used to eliminate duplicate rows from the query output?",
+          "options": [
+            "ELIMINATE",
+            "UNIQUE",
+            "DELETE",
+            "DISTINCT"
+          ],
+          "correctAnswer": "DISTINCT",
+          "explanation": "The DISTINCT keyword is placed immediately after SELECT to filter out duplicate rows from the result set.",
+          "topic": "SQL Basics",
+          "chapterId": "ch4"
+        },
+        {
+          "id": "2024-q38",
+          "number": 38,
+          "type": "mcq",
+          "question": "A programmer wants to retrieve employees whose name starts with 'R'. Which SQL query is correct?",
+          "options": [
+            "SELECT * FROM EMPLOYEE HAVING name = 'R%';",
+            "SELECT * FROM EMPLOYEE WHERE name LIKE 'R%';",
+            "SELECT * FROM EMPLOYEE WHERE name LIKE '%R';",
+            "SELECT * FROM EMPLOYEE HAVING name = '%R';"
+          ],
+          "correctAnswer": "SELECT * FROM EMPLOYEE WHERE name LIKE 'R%';",
+          "explanation": "The LIKE operator is used for pattern matching. The wildcard % represents any sequence of characters. 'R%' matches names starting with 'R'.",
+          "topic": "SQL Subqueries",
+          "chapterId": "ch7"
+        },
+        {
+          "id": "2024-q39",
+          "number": 39,
+          "type": "mcq",
+          "question": "Which SQL command deletes all records in a table but keeps the table structure intact?",
+          "options": [
+            "DELETE TABLE table_name;",
+            "DELETE FROM table_name;",
+            "DROP TABLE table_name;",
+            "DELETE TABLE FROM table_name;"
+          ],
+          "correctAnswer": "DELETE FROM table_name;",
+          "explanation": "DELETE FROM table_name removes rows but keeps the table's schema. DROP TABLE removes the table entirely, structure and all.",
+          "topic": "SQL Basics",
+          "chapterId": "ch4"
+        },
+        {
+          "id": "2024-q40",
+          "number": 40,
+          "type": "mcq",
+          "question": "Identify the incorrect statement about the HAVING clause in SQL:",
+          "options": [
+            "HAVING is used in conjunction with GROUP BY.",
+            "Aggregate functions can appear after HAVING.",
+            "HAVING is used to filter individual table rows prior to aggregation.",
+            "HAVING applies conditions to grouped summaries."
+          ],
+          "correctAnswer": "HAVING is used to filter individual table rows prior to aggregation.",
+          "explanation": "HAVING applies filters to aggregated groups. Row-level filtering prior to grouping is done via the WHERE clause.",
+          "topic": "SQL Intermediate",
+          "chapterId": "ch5"
+        },
+        {
+          "id": "2024-q41",
+          "number": 41,
+          "type": "mcq",
+          "question": "Which of the following are SQL Transaction Control Language (TCL) commands?",
+          "options": [
+            "COMMIT and ROLLBACK",
+            "UPDATE and TRUNCATE",
+            "SELECT and INSERT",
+            "GRANT and REVOKE"
+          ],
+          "correctAnswer": "COMMIT and ROLLBACK",
+          "explanation": "COMMIT and ROLLBACK are TCL commands. UPDATE/INSERT are DML. GRANT/REVOKE are DCL.",
+          "topic": "SQL Basics",
+          "chapterId": "ch4"
+        },
+        {
+          "id": "2024-q42",
+          "number": 42,
+          "type": "mcq",
+          "question": "Which of the following is NOT an SQL constraint?",
+          "options": [
+            "PRIMARY KEY",
+            "NOT NULL",
+            "AUTOINCREMENT",
+            "UNION"
+          ],
+          "correctAnswer": "UNION",
+          "explanation": "UNION is a set operations query operator. PRIMARY KEY, NOT NULL, and AUTOINCREMENT are table column constraints.",
+          "topic": "SQL Basics",
+          "chapterId": "ch4"
+        },
+        {
+          "id": "2024-q43",
+          "number": 43,
+          "type": "mcq",
+          "question": "Which operator compares a value to a list of specified values?",
+          "options": [
+            "ANY",
+            "BETWEEN",
+            "ALL",
+            "IN"
+          ],
+          "correctAnswer": "IN",
+          "explanation": "The IN operator allows matching against a specified list of values or subquery results.",
+          "topic": "SQL Subqueries",
+          "chapterId": "ch7"
+        },
+        {
+          "id": "2024-q44",
+          "number": 44,
+          "type": "mcq",
+          "question": "Which operator tests a column for the absence of data (null values)?",
+          "options": [
+            "NOT",
+            "Exists",
+            "IS NULL",
+            "None"
+          ],
+          "correctAnswer": "IS NULL",
+          "explanation": "SQL uses the IS NULL operator to test for missing/empty values. You cannot use = NULL.",
+          "topic": "SQL Subqueries",
+          "chapterId": "ch7"
+        },
+        {
+          "id": "2024-q45",
+          "number": 45,
+          "type": "mcq",
+          "question": "If neither ASC nor DESC is specified after a column name in a SQL ORDER BY clause, what is the default behavior?",
+          "options": [
+            "DESC (Descending)",
+            "ASC (Ascending)",
+            "No default sorting is applied",
+            "An error is thrown"
+          ],
+          "correctAnswer": "ASC (Ascending)",
+          "explanation": "The ORDER BY clause defaults to ASC (ascending) sorting.",
+          "topic": "SQL Subqueries",
+          "chapterId": "ch7"
+        },
+        {
+          "id": "2024-q46",
+          "number": 46,
+          "type": "mcq",
+          "question": "Which SQL command modifies the structure/definition of an existing table?",
+          "options": [
+            "CREATE",
+            "UPDATE",
+            "ALTER",
+            "SELECT"
+          ],
+          "correctAnswer": "ALTER",
+          "explanation": "ALTER TABLE is used to add, modify, or drop columns and constraints in an existing table structure.",
+          "topic": "SQL Basics",
+          "chapterId": "ch4"
+        },
+        {
+          "id": "2024-q47",
+          "number": 47,
+          "type": "mcq",
+          "question": "___ allows multiple users to access and manipulate the same database concurrently without inconsistency.",
+          "options": [
+            "Security Control",
+            "Integrity Constraints",
+            "Recovery Subsystem",
+            "Concurrency Control"
+          ],
+          "correctAnswer": "Concurrency Control",
+          "explanation": "Concurrency control ensures multiple transactions execute simultaneously without conflicts.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q48",
+          "number": 48,
+          "type": "mcq",
+          "question": "The rules specifying which access controls a database system must enforce are called security:",
+          "options": [
+            "Rules",
+            "policies",
+            "constraints",
+            "restrictions"
+          ],
+          "correctAnswer": "policies",
+          "explanation": "Security policies define the rules governing database access controls.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q49",
+          "number": 49,
+          "type": "mcq",
+          "question": "Which term describes the process of determining what operations a user can perform on specific database objects?",
+          "options": [
+            "Authentication",
+            "Protection",
+            "Authorization",
+            "Investigation"
+          ],
+          "correctAnswer": "Authorization",
+          "explanation": "Authorization determines the privileges (select, update, insert, delete) an authenticated user possesses.",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q50",
+          "number": 50,
+          "type": "mcq",
+          "question": "Database ___ refers to the correctness and consistency of stored database values.",
+          "options": [
+            "Integrity",
+            "Security",
+            "Concurrency",
+            "Recovery"
+          ],
+          "correctAnswer": "Integrity",
+          "explanation": "Integrity guarantees data accuracy and correctness through constraints (domain, primary key, referential integrity).",
+          "topic": "Database Architecture",
+          "chapterId": "ch1"
+        },
+        {
+          "id": "2024-q51",
+          "number": 51,
+          "type": "mcq",
+          "question": "Based on the Bank Schema, what is the SQL query to find the average loan amount for each branch?",
+          "options": [
+            "SELECT AVG(amount) FROM loan ORDER BY branch_name;",
+            "SELECT branch_name, AVG(amount) FROM loan GROUP BY branch_name;",
+            "SELECT branch_name, AVG(amount) FROM loan ORDER BY branch_name;",
+            "SELECT AVG(amount) FROM loan GROUP BY branch_name;"
+          ],
+          "correctAnswer": "SELECT branch_name, AVG(amount) FROM loan GROUP BY branch_name;",
+          "explanation": "To get the average for each branch, select branch_name and group the query by branch_name.",
+          "topic": "SQL Intermediate",
+          "chapterId": "ch5"
+        },
+        {
+          "id": "2024-q52",
+          "number": 52,
+          "type": "mcq",
+          "question": "Based on the Bank Schema, what is the SQL query to find all branches with more than one loan?",
+          "options": [
+            "SELECT branch_name FROM loan branch_name WHERE COUNT(amount) > 1;",
+            "SELECT branch_name, COUNT(*) FROM loan HAVING COUNT(amount) > 1;",
+            "SELECT branch_name, COUNT(*) FROM loan GROUP BY branch_name WHERE COUNT(amount) > 1;",
+            "SELECT branch_name, COUNT(*) FROM loan GROUP BY branch_name HAVING COUNT(*) > 1;"
+          ],
+          "correctAnswer": "SELECT branch_name, COUNT(*) FROM loan GROUP BY branch_name HAVING COUNT(*) > 1;",
+          "explanation": "Aggregations in filters require GROUP BY and HAVING clauses. We group by branch_name and filter groups with HAVING COUNT(*) > 1.",
+          "topic": "SQL Intermediate",
+          "chapterId": "ch5"
+        },
+        {
+          "id": "2024-q53",
+          "number": 53,
+          "type": "mcq",
+          "question": "Based on the Bank Schema, what is the SQL query to find the branch name with the smallest number of assets?",
+          "options": [
+            "SELECT MIN(assets) FROM branch ;",
+            "SELECT branch_name FROM branch WHERE assets = (SELECT MIN(assets) FROM branch);",
+            "SELECT branch_name FROM branch WHERE assets = MIN(assets) ;",
+            "SELECT branch_name FROM branch HAVING assets = MIN(assets);"
+          ],
+          "correctAnswer": "SELECT branch_name FROM branch WHERE assets = (SELECT MIN(assets) FROM branch);",
+          "explanation": "We use a subquery to find the minimum asset value because aggregate functions like MIN cannot be directly evaluated in a WHERE clause.",
+          "topic": "SQL Subqueries",
+          "chapterId": "ch7"
+        },
+        {
+          "id": "2024-q54",
+          "number": 54,
+          "type": "mcq",
+          "question": "Based on the Bank Schema, what is the SQL query to find the largest loan at each branch?",
+          "options": [
+            "SELECT branch_name, MAX(amount) FROM loan GROUP BY branch_name;",
+            "SELECT branch_name FROM loan HAVING MAX(amount) ;",
+            "SELECT branch_name FROM loan GROUP BY branch_name WHERE amount = MAX(amount);",
+            "SELECT branch_name FROM loan WHERE amount = MAX(amount);"
+          ],
+          "correctAnswer": "SELECT branch_name, MAX(amount) FROM loan GROUP BY branch_name;",
+          "explanation": "We group loans by branch_name and apply MAX(amount) to get the largest loan amount per branch.",
+          "topic": "SQL Intermediate",
+          "chapterId": "ch5"
+        },
+        {
+          "id": "2024-q55",
+          "number": 55,
+          "type": "mcq",
+          "question": "Based on the Bank Schema, what is the SQL query to find customer names who have loans, along with the branch names from which they borrowed?",
+          "options": [
+            "SELECT cust_name, branch_name FROM depositor, account WHERE depositor.acct_id = account.acct_id;",
+            "SELECT cust_name, branch_name FROM depositor OUTER JOIN account ON depositor.acct_id = account.acct_id;",
+            "SELECT cust_name, branch_name FROM borrower RIGHT OUTER JOIN loan ON borrower.loan_id = loan.loan_id;",
+            "SELECT cust_name, branch_name FROM borrower JOIN loan ON borrower.loan_id = loan.loan_id;"
+          ],
+          "correctAnswer": "SELECT cust_name, branch_name FROM borrower JOIN loan ON borrower.loan_id = loan.loan_id;",
+          "explanation": "Joining borrower and loan tables on loan_id retrieves customer names paired with their loan branches.",
+          "topic": "SQL Joins",
+          "chapterId": "ch6"
+        },
+        {
+          "id": "2024-q56",
+          "number": 56,
+          "type": "mcq",
+          "question": "Based on the Bank Schema, what is the SQL query to find all account details in the 'Los Angeles' branch with a balance greater than 250 and less than 300?",
+          "options": [
+            "SELECT acct_id, balance FROM account WHERE branch_name = 'Los Angeles' AND (balance BETWEEN 250 AND 300);",
+            "SELECT * FROM account WHERE branch_name = 'Los Angeles' AND (balance BETWEEN 250 AND 300);",
+            "SELECT DISTINCT acct_id, balance FROM account WHERE branch_name = 'Los Angeles' AND (250 < balance < 300);",
+            "SELECT * FROM account WHERE branch_name = 'Los Angeles' OR (250 < balance < 300);"
+          ],
+          "correctAnswer": "SELECT * FROM account WHERE branch_name = 'Los Angeles' AND (balance BETWEEN 250 AND 300);",
+          "explanation": "The query asks for 'all details' (SELECT *), matches 'Los Angeles' branch, and uses BETWEEN...AND for the inclusive range.",
+          "topic": "SQL Subqueries",
+          "chapterId": "ch7"
+        },
+        {
+          "id": "2024-q57",
+          "number": 57,
+          "type": "mcq",
+          "question": "Based on the Bank Schema, what is the SQL query to find all accounts at branches with 'le' somewhere in their branch name?",
+          "options": [
+            "SELECT * FROM account WHERE branch_name LIKE '%le%';",
+            "SELECT * FROM account WHERE branch_name = 'le';",
+            "SELECT * FROM account WHERE branch_name LIKE '%le_';",
+            "SELECT * FROM account WHERE branch_name LIKE 'le%';"
+          ],
+          "correctAnswer": "SELECT * FROM account WHERE branch_name LIKE '%le%';",
+          "explanation": "The wildcard pattern '%le%' matches any branch name containing the substring 'le' at any position.",
+          "topic": "SQL Subqueries",
+          "chapterId": "ch7"
+        },
+        {
+          "id": "2024-q58",
+          "number": 58,
+          "type": "mcq",
+          "question": "To establish acct_id as a foreign key referencing the account table, which statement should be added to the depositor schema definition?",
+          "options": [
+            "REFERENCE account(acct_id);",
+            "FOREIGN KEY REFERENCES account(acct_id);",
+            "FOREIGN KEY (acct_id) REFERENCES account(acct_id);",
+            "FOREIGN KEY (account_id) CHAR(10) REFERENCES account(acct_id);"
+          ],
+          "correctAnswer": "FOREIGN KEY (acct_id) REFERENCES account(acct_id);",
+          "explanation": "The SQL constraint syntax is: FOREIGN KEY (local_column) REFERENCES foreign_table(foreign_column).",
+          "topic": "SQL Basics",
+          "chapterId": "ch4"
+        },
+        {
+          "id": "2024-q59",
+          "number": 59,
+          "type": "mcq",
+          "question": "Retrieve a list of all bank branch details ordered by branch city, with each city's branches listed in reverse order of assets.",
+          "options": [
+            "SELECT * FROM branch ORDER BY branch_city, assets ASC;",
+            "SELECT * FROM branch ORDER BY branch_city DESC, assets ASC;",
+            "SELECT * FROM branch ORDER BY branch_city ASC, assets DESC;",
+            "SELECT * FROM branch ORDER BY assets DESC;"
+          ],
+          "correctAnswer": "SELECT * FROM branch ORDER BY branch_city ASC, assets DESC;",
+          "explanation": "Ordering by branch_city ASC sorts alphabetically. Specifying assets DESC orders branches within each city in descending order of assets.",
+          "topic": "SQL Subqueries",
+          "chapterId": "ch7"
+        },
+        {
+          "id": "2024-q60",
+          "number": 60,
+          "type": "mcq",
+          "question": "Based on the Bank Schema, what is the SQL query to find the number of branches that currently have loans?",
+          "options": [
+            "SELECT loan_id FROM loan;",
+            "SELECT COUNT(DISTINCT branch_name) FROM loan;",
+            "SELECT COUNT(branch_name) FROM loan;",
+            "SELECT COUNT(branch_name) FROM loan HAVING amount;"
+          ],
+          "correctAnswer": "SELECT COUNT(DISTINCT branch_name) FROM loan;",
+          "explanation": "COUNT(DISTINCT branch_name) counts the number of unique branches listed in the loan table, avoiding counting duplicate loans.",
+          "topic": "SQL Intermediate",
+          "chapterId": "ch5"
+        }
+      ]
+    }
+  ]
+}

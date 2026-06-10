@@ -1,0 +1,287 @@
+[
+  {
+    "id": "pred-a1",
+    "examVariant": "A",
+    "questionNumber": 1,
+    "question": "Which of the following is NOT a type of join operation in SQL?",
+    "options": [
+      "INNER JOIN",
+      "RIGHT OUTER JOIN",
+      "SEMI JOIN",
+      "FULL OUTER JOIN"
+    ],
+    "correctAnswer": "SEMI JOIN",
+    "explanation": "Inner Join, Left/Right Outer Join, and Full Outer Join are standard SQL join types. Semi-join is a relational algebra concept but is not an explicit SQL command word.",
+    "probability": "high",
+    "reason": "SQL joins are tested in every past exam. Distinguishing between SQL syntax and relational algebra operators is a common exam trick.",
+    "relatedChapter": "ch6",
+    "difficulty": "medium",
+    "topicFrequency": 5
+  },
+  {
+    "id": "pred-a2",
+    "examVariant": "A",
+    "questionNumber": 2,
+    "question": "Given tables EMPLOYEE(SSN, Fname, Lname, Dno) and DEPARTMENT(Dnumber, Dname, Location), which SQL query correctly retrieves the first and last names of employees in department number 5?",
+    "options": [
+      "SELECT Fname, Lname FROM Employee WHERE Dno = 5;",
+      "SELECT Fname, Lname FROM Employee, Department WHERE Dno = Department.Dnumber AND Department.Dnumber = 5;",
+      "SELECT Fname, Lname FROM Employee JOIN Department ON Employee.Dno = Dnumber WHERE Dnumber = 5;",
+      "All of the above."
+    ],
+    "correctAnswer": "All of the above.",
+    "explanation": "Option A works directly because Dno exists in the Employee table. Options B and C perform correct implicit and explicit joins with the Department table to filter by Dnumber = 5.",
+    "probability": "very-high",
+    "reason": "This tests the equivalence of different SQL join syntaxes (implicit, explicit, and single-table short cuts).",
+    "relatedChapter": "ch6",
+    "difficulty": "hard",
+    "topicFrequency": 6
+  },
+  {
+    "id": "pred-a3",
+    "examVariant": "A",
+    "questionNumber": 3,
+    "question": "Which constraint ensures referential integrity between tables?",
+    "options": [
+      "CHECK",
+      "UNIQUE",
+      "FOREIGN KEY",
+      "PRIMARY KEY"
+    ],
+    "correctAnswer": "FOREIGN KEY",
+    "explanation": "A FOREIGN KEY constraint establishes referential integrity by requiring that values in a column must match the primary key value in a referenced table or be NULL.",
+    "probability": "very-high",
+    "reason": "Referential integrity is a fundamental database constraint tested in both ER mapping and SQL schema design.",
+    "relatedChapter": "ch3",
+    "difficulty": "easy",
+    "topicFrequency": 6
+  },
+  {
+    "id": "pred-a4",
+    "examVariant": "A",
+    "questionNumber": 4,
+    "question": "A relation R(A, B, C) has functional dependencies: A → B and B → C. The primary key is A. What is true about R?",
+    "options": [
+      "It is in 1NF but not 2NF.",
+      "It is in 2NF but not 3NF.",
+      "It is in 3NF.",
+      "It violates 1NF."
+    ],
+    "correctAnswer": "It is in 2NF but not 3NF.",
+    "explanation": "Since the key is A, there are no partial dependencies (so it is in 2NF). However, the chain A → B → C represents a transitive dependency through B (non-key), which violates 3NF.",
+    "probability": "very-high",
+    "reason": "Transitive dependency and 3NF violations are the most common normalization questions in database exams.",
+    "relatedChapter": "ch8",
+    "difficulty": "medium",
+    "topicFrequency": 6
+  },
+  {
+    "id": "pred-a5",
+    "examVariant": "A",
+    "questionNumber": 5,
+    "question": "Consider the EER diagram: an entity COURSE and a weak entity SECTION (dependent on COURSE). How is SECTION's primary key defined?",
+    "options": [
+      "A unique section number only.",
+      "(CourseID, SectionNo) combining COURSE's primary key and its own partial key.",
+      "Using only CourseID.",
+      "Using a foreign key to COURSE without its own key."
+    ],
+    "correctAnswer": "(CourseID, SectionNo) combining COURSE's primary key and its own partial key.",
+    "explanation": "A weak entity has no key of its own. Its primary key is formed by combining the primary key of its identifying/owner entity (CourseID) and its own discriminator/partial key (SectionNo).",
+    "probability": "high",
+    "reason": "Weak entity mapping is a crucial step in ER-to-Relational mapping that appears in almost every conceptual design section.",
+    "relatedChapter": "ch3",
+    "difficulty": "medium",
+    "topicFrequency": 5
+  },
+  {
+    "id": "pred-b1",
+    "examVariant": "B",
+    "questionNumber": 1,
+    "question": "In relational algebra, the projection operator π removes:",
+    "options": [
+      "Rows",
+      "Columns",
+      "Duplicate rows",
+      "NULL values"
+    ],
+    "correctAnswer": "Columns",
+    "explanation": "The projection operator π selects specified columns (attributes) from a relation, thereby removing/discarding all non-specified columns.",
+    "probability": "very-high",
+    "reason": "The difference between selection (rows) and projection (columns) is a baseline relational algebra concept tested every year.",
+    "relatedChapter": "ch9",
+    "difficulty": "easy",
+    "topicFrequency": 6
+  },
+  {
+    "id": "pred-b2",
+    "examVariant": "B",
+    "questionNumber": 2,
+    "question": "Which SQL clause is used to filter groups after aggregation?",
+    "options": [
+      "WHERE",
+      "HAVING",
+      "GROUP BY",
+      "ORDER BY"
+    ],
+    "correctAnswer": "HAVING",
+    "explanation": "The HAVING clause applies search conditions to groups summaries created by the GROUP BY clause, whereas WHERE filters individual rows before grouping.",
+    "probability": "very-high",
+    "reason": "Filtering aggregate results (WHERE vs HAVING) is a classic SQL design question in examinations.",
+    "relatedChapter": "ch5",
+    "difficulty": "easy",
+    "topicFrequency": 6
+  },
+  {
+    "id": "pred-b3",
+    "examVariant": "B",
+    "questionNumber": 3,
+    "question": "Identify the partial dependency in the relation R(OrderID, ProductID, Quantity, ProductName) with primary key (OrderID, ProductID).",
+    "options": [
+      "OrderID → Quantity",
+      "ProductID → ProductName",
+      "OrderID → ProductName",
+      "(OrderID, ProductID) → Quantity"
+    ],
+    "correctAnswer": "ProductID → ProductName",
+    "explanation": "ProductName is determined by ProductID alone, which is a proper subset of the composite primary key (OrderID, ProductID). This partial dependency violates 2NF.",
+    "probability": "very-high",
+    "reason": "2NF violations on junction tables (M:N relations) are extremely common exam scenarios.",
+    "relatedChapter": "ch8",
+    "difficulty": "medium",
+    "topicFrequency": 6
+  },
+  {
+    "id": "pred-b4",
+    "examVariant": "B",
+    "questionNumber": 4,
+    "question": "Which of the following SQL statements correctly creates a table with a composite primary key?",
+    "options": [
+      "CREATE TABLE T(a INT PRIMARY KEY, b INT);",
+      "CREATE TABLE T(a INT, b INT, PRIMARY KEY (a,b));",
+      "CREATE TABLE T(a INT, b INT UNIQUE);",
+      "CREATE TABLE T(a INT KEY, b INT KEY);"
+    ],
+    "correctAnswer": "CREATE TABLE T(a INT, b INT, PRIMARY KEY (a,b));",
+    "explanation": "A composite key cannot be defined at the column level. It must be defined as a table constraint at the end of the table definition using PRIMARY KEY (col1, col2).",
+    "probability": "high",
+    "reason": "Tests knowledge of DDL syntax limits and constraint scopes in standard SQL.",
+    "relatedChapter": "ch4",
+    "difficulty": "medium",
+    "topicFrequency": 4
+  },
+  {
+    "id": "pred-b5",
+    "examVariant": "B",
+    "questionNumber": 5,
+    "question": "A relation is in BCNF if and only if:",
+    "options": [
+      "It is in 3NF and has no nulls.",
+      "Every determinant is a superkey.",
+      "There are no candidate keys.",
+      "It only has one attribute."
+    ],
+    "correctAnswer": "Every determinant is a superkey.",
+    "explanation": "Boyce-Codd Normal Form (BCNF) is stricter than 3NF. It requires that for every non-trivial functional dependency X → Y, X must be a superkey.",
+    "probability": "high",
+    "reason": "Differentiating 3NF and BCNF requirements is a frequent topic in normalization theory sections.",
+    "relatedChapter": "ch8",
+    "difficulty": "medium",
+    "topicFrequency": 5
+  },
+  {
+    "id": "pred-c1",
+    "examVariant": "C",
+    "questionNumber": 1,
+    "question": "What does the SQL keyword DISTINCT do?",
+    "options": [
+      "Sorts the result.",
+      "Removes duplicate rows from the result set.",
+      "Limits output to numeric values.",
+      "Finds the minimum value."
+    ],
+    "correctAnswer": "Removes duplicate rows from the result set.",
+    "explanation": "The DISTINCT keyword is used inside a SELECT query to filter out duplicate rows and return unique combinations of values.",
+    "probability": "very-high",
+    "reason": "DISTINCT is a core SQL modifier tested in multiple basic query sections.",
+    "relatedChapter": "ch7",
+    "difficulty": "easy",
+    "topicFrequency": 6
+  },
+  {
+    "id": "pred-c2",
+    "examVariant": "C",
+    "questionNumber": 2,
+    "question": "Which combination of SQL clauses correctly filters on an aggregate value?",
+    "options": [
+      "WHERE Salary > 5000 GROUP BY Dept",
+      "SELECT Dept, SUM(Salary) FROM Emp HAVING SUM(Salary) > 5000 GROUP BY Dept;",
+      "SELECT Dept, SUM(Salary) FROM Emp GROUP BY Dept HAVING SUM(Salary) > 5000;",
+      "SELECT Dept, SUM(Salary) FROM Emp GROUP BY Dept WHERE SUM(Salary) > 5000;"
+    ],
+    "correctAnswer": "SELECT Dept, SUM(Salary) FROM Emp GROUP BY Dept HAVING SUM(Salary) > 5000;",
+    "explanation": "The correct clause order in SQL is GROUP BY followed by HAVING. The HAVING clause applies filters to the grouped results.",
+    "probability": "high",
+    "reason": "Tests the syntax order and operational sequence of SQL grouping and aggregation.",
+    "relatedChapter": "ch5",
+    "difficulty": "medium",
+    "topicFrequency": 5
+  },
+  {
+    "id": "pred-c3",
+    "examVariant": "C",
+    "questionNumber": 3,
+    "question": "In an ER diagram, a one-to-one (1:1) relationship constraint means:",
+    "options": [
+      "Each entity in both sets relates to at most one entity in the other set.",
+      "One entity relates to many entities in the other set.",
+      "Many entities relate to many entities.",
+      "The relationship must connect a weak entity."
+    ],
+    "correctAnswer": "Each entity in both sets relates to at most one entity in the other set.",
+    "explanation": "A 1:1 cardinality ratio specifies that an entity in set A is associated with at most one entity in set B, and vice versa.",
+    "probability": "high",
+    "reason": "Basic cardinality ratios in ER modeling are core exam topics.",
+    "relatedChapter": "ch3",
+    "difficulty": "easy",
+    "topicFrequency": 5
+  },
+  {
+    "id": "pred-c4",
+    "examVariant": "C",
+    "questionNumber": 4,
+    "question": "What result does the relational algebra expression σ_{Grade > 85}(Course) produce?",
+    "options": [
+      "All courses.",
+      "Only rows from Course where Grade is greater than 85.",
+      "Groups courses by grade.",
+      "Removes the Grade column from Course."
+    ],
+    "correctAnswer": "Only rows from Course where Grade is greater than 85.",
+    "explanation": "The selection operator σ acts as a horizontal filter, selecting only the tuples (rows) that satisfy the predicate Grade > 85.",
+    "probability": "very-high",
+    "reason": "Relational algebra selection notation and execution are tested in query optimization and processing sections.",
+    "relatedChapter": "ch9",
+    "difficulty": "easy",
+    "topicFrequency": 6
+  },
+  {
+    "id": "pred-c5",
+    "examVariant": "C",
+    "questionNumber": 5,
+    "question": "Which ACID transaction property states that a transaction's intermediate/uncommitted changes must not be visible to other transactions?",
+    "options": [
+      "Atomicity",
+      "Consistency",
+      "Isolation",
+      "Durability"
+    ],
+    "correctAnswer": "Isolation",
+    "explanation": "Isolation ensures that concurrent transaction executions do not interfere with one another. Each transaction remains unaware of concurrent operations until they commit.",
+    "probability": "very-high",
+    "reason": "Understanding ACID properties is a key requirement of both transaction theory and relational design.",
+    "relatedChapter": "ch8",
+    "difficulty": "medium",
+    "topicFrequency": 6
+  }
+]

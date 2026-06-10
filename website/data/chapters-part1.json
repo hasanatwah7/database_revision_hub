@@ -1,0 +1,141 @@
+[
+  {
+    "id": "ch1",
+    "number": 1,
+    "title": "Introduction to Databases",
+    "lectures": ["L1", "L2"],
+    "icon": "🗄️",
+    "color": "#6c5ce7",
+    "summary": "Covers fundamental concepts of databases, DBMS, data models, ANSI/SPARC 3-level architecture, data independence, schemas vs instances, and advantages of DBMS over file-based systems.",
+    "definitions": [
+      {"term": "Database", "definition": "A logically organized collection of related data with some inherent meaning, designed for a specific purpose.", "example": "A university database storing student records, courses, and enrollments."},
+      {"term": "DBMS", "definition": "A general-purpose software system that facilitates defining, constructing, manipulating, and sharing databases among users and applications.", "example": "MySQL, Oracle, PostgreSQL are examples of DBMS software."},
+      {"term": "Miniworld / Universe of Discourse", "definition": "The part of the real world about which data is stored in the database.", "example": "For a bank database, the miniworld includes customers, accounts, and transactions."},
+      {"term": "Schema", "definition": "The overall design/description of the database structure. It rarely changes once defined.", "example": "STUDENT(ID, Name, GPA) describes the structure of the Student table."},
+      {"term": "Instance", "definition": "The actual data stored in the database at a particular moment in time. Changes frequently.", "example": "The set of all student records currently in the STUDENT table."},
+      {"term": "Data Independence", "definition": "The ability to change the schema at one level without affecting the schema at the next higher level.", "example": "Changing how data is stored on disk (physical) without changing the logical schema."},
+      {"term": "ANSI/SPARC Architecture", "definition": "A 3-level architecture consisting of External (user views), Conceptual (logical structure), and Internal (physical storage) levels.", "example": "External: student view showing only grades. Conceptual: full student table. Internal: index files on disk."},
+      {"term": "Metadata", "definition": "Data about the structure of the database, stored in the DBMS catalog. This is the self-describing nature of a database.", "example": "Table names, column types, constraints stored in system tables."},
+      {"term": "Data Abstraction", "definition": "Hiding storage details and presenting users with a conceptual view of the database.", "example": "Users write SQL queries without knowing how data is physically stored."}
+    ],
+    "mustKnowConcepts": [
+      {"title": "3-Level Architecture", "description": "External level (user views), Conceptual level (global logical design, describes structure and constraints), Internal level (physical storage). Each level has its own schema.", "importance": "critical", "examFrequency": 6},
+      {"title": "DBMS vs File Systems", "description": "DBMS provides: data abstraction, reduced redundancy, data sharing, integrity, security, concurrency control, backup/recovery. File systems suffer from data redundancy, inconsistency, isolation, and no concurrency control.", "importance": "critical", "examFrequency": 5},
+      {"title": "Data Independence", "description": "Logical independence: change conceptual schema without changing external. Physical independence: change internal schema without changing conceptual.", "importance": "high", "examFrequency": 4},
+      {"title": "DBA Responsibilities", "description": "Database Administrator authorizes access, monitors usage, acquires resources, handles security and recovery. They are responsible for giving access and monitoring database use.", "importance": "high", "examFrequency": 3},
+      {"title": "Types of Database Users", "description": "Casual end users (occasional queries), Parametric/naive users (standard queries), Sophisticated users (engineers/analysts who learn DBMS), Stand-alone users.", "importance": "medium", "examFrequency": 2},
+      {"title": "Database Types", "description": "Operational, Distributed (data split across sites), Cloud (remotely maintained via web), Parallel (multiple CPUs), Spatial, Real-time, Multimedia, NoSQL (graph databases use nodes/edges).", "importance": "high", "examFrequency": 5}
+    ],
+    "examTricks": [
+      {"trick": "Conceptual level 'unifies various external views' — don't confuse with physical level", "explanation": "The conceptual/logical level describes the global structure. External = user views. Internal/Physical = storage."},
+      {"trick": "Graph database is NoSQL, not SQL", "explanation": "Graph databases (using nodes, edges, properties) fall under NoSQL category, not traditional SQL."},
+      {"trick": "Cloud database key distinction: can reside remotely, maintained through web browsers", "explanation": "This is the defining feature that distinguishes cloud databases from other types."},
+      {"trick": "Parallel databases improve processing using multiple CPUs", "explanation": "Don't confuse with distributed databases which spread data across geographic locations."},
+      {"trick": "Self-describing nature is stored in DBMS catalog, not application program", "explanation": "The metadata/catalog stores the database description — this is what makes it self-describing."}
+    ],
+    "confusedConcepts": [
+      {"conceptA": "Schema", "conceptB": "Instance", "difference": "Schema is the structure/design (rarely changes). Instance is the actual data at a point in time (changes frequently).", "howToRemember": "Schema = blueprint of a house. Instance = the furniture inside at any given moment."},
+      {"conceptA": "Conceptual Level", "conceptB": "External Level", "difference": "Conceptual is the single global logical design. External is individual user views (there can be many).", "howToRemember": "Conceptual = the whole building plan. External = each apartment's floor plan."},
+      {"conceptA": "Distributed DB", "conceptB": "Parallel DB", "difference": "Distributed: data across geographic sites on a network. Parallel: multiple CPUs in same location for speed.", "howToRemember": "Distributed = offices in different cities. Parallel = multiple workers in same office."}
+    ],
+    "quickRevision": [
+      {"topic": "Architecture", "keyPoints": ["3 levels: External → Conceptual → Internal", "Each level has its own schema", "Conceptual unifies external views", "Physical level deals with storage"]},
+      {"topic": "DBMS Functions", "keyPoints": ["Define, Construct, Manipulate, Share", "Recovery, Integrity, Security, Concurrency", "NOT: data analysis and statistics (exam trick!)"]},
+      {"topic": "Database Properties", "keyPoints": ["Self-describing (metadata in catalog)", "Program-data independence", "Multiple views supported", "Data sharing with concurrency control"]},
+      {"topic": "Key Terms", "keyPoints": ["Cardinality = number of tuples/rows", "Degree = number of attributes/columns", "Domain = set of permitted values for an attribute"]}
+    ],
+    "totalQuestions": 15
+  },
+  {
+    "id": "ch2",
+    "number": 2,
+    "title": "ER Modeling",
+    "lectures": ["L3"],
+    "icon": "📐",
+    "color": "#0984e3",
+    "summary": "Covers Entity-Relationship (ER) diagrams including entities, attributes, relationships, cardinality ratios, participation constraints, weak entities, and keys.",
+    "definitions": [
+      {"term": "Entity", "definition": "Any object in the system that we want to model and store information about.", "example": "STUDENT, COURSE, EMPLOYEE are entities."},
+      {"term": "Attribute", "definition": "A property that describes an entity. Can be simple, composite, multi-valued, or derived.", "example": "Name (composite: FirstName + LastName), Age (derived from DateOfBirth), Phone (multi-valued)."},
+      {"term": "Key Attribute", "definition": "An attribute that uniquely identifies individual entities of an entity type.", "example": "StudentID uniquely identifies each student."},
+      {"term": "Weak Entity", "definition": "An entity that cannot be uniquely identified by its own attributes alone. It depends on an owning/identifying entity for its existence.", "example": "SECTION depends on COURSE. SECTION's key = (CourseID + SectionNo)."},
+      {"term": "Relationship", "definition": "An association between two or more entities.", "example": "WORKS_FOR relationship between EMPLOYEE and DEPARTMENT."},
+      {"term": "Cardinality Ratio", "definition": "Specifies the maximum number of relationship instances an entity can participate in. Types: 1:1, 1:M, M:N.", "example": "Each department has ONE manager (1:1). Each department has MANY employees (1:M). Students take MANY courses and courses have MANY students (M:N)."},
+      {"term": "Participation Constraint", "definition": "Total (every entity must participate, double line) vs Partial (some entities may not participate, single line).", "example": "Every employee MUST work for a department (total). Not every employee manages a department (partial)."},
+      {"term": "Composite Attribute", "definition": "An attribute that can be divided into smaller sub-parts.", "example": "Address → (Street, City, State, Zip)"},
+      {"term": "Derived Attribute", "definition": "An attribute whose value can be calculated from other attributes.", "example": "AGE derived from DATE_OF_BIRTH."}
+    ],
+    "mustKnowConcepts": [
+      {"title": "ER Diagram Symbols", "description": "Rectangle = Entity, Ellipse = Attribute, Diamond = Relationship, Double rectangle = Weak entity, Double ellipse = Multi-valued attribute, Dashed ellipse = Derived attribute.", "importance": "critical", "examFrequency": 6},
+      {"title": "Cardinality Ratios", "description": "1:1 (one-to-one), 1:M (one-to-many), M:N (many-to-many). Students-Courses is M:N. Department-Manager is 1:1.", "importance": "critical", "examFrequency": 6},
+      {"title": "Weak Entity Identification", "description": "Weak entity has no key of its own. Uses partial key + owner's key. Connected via identifying relationship (double diamond). Always has total participation.", "importance": "critical", "examFrequency": 5},
+      {"title": "Participation: Total vs Partial", "description": "Total = double line (must participate). Partial = single line (may participate). Total means existence dependency.", "importance": "high", "examFrequency": 4},
+      {"title": "Attribute Types", "description": "Simple (atomic), Composite (divisible), Multi-valued (multiple values), Derived (calculated), Key (unique identifier).", "importance": "high", "examFrequency": 4}
+    ],
+    "examTricks": [
+      {"trick": "Weak entity key = partial key + owner's primary key combined", "explanation": "SECTION key is (CourseID, SectionNo), not just SectionNo alone."},
+      {"trick": "Derived attribute represented by dashed ellipse", "explanation": "AGE calculated from DATE_OF_BIRTH is derived — shown with dashed outline."},
+      {"trick": "Students-Courses relationship is M:N, not 1:M", "explanation": "One student takes many courses AND one course has many students = M:N."},
+      {"trick": "Diamond shape = Relationship, NOT entity", "explanation": "Common mistake: confusing shapes. Rectangle=Entity, Diamond=Relationship, Ellipse=Attribute."},
+      {"trick": "An entity's attribute can be simple, composite, or multi-valued — it CAN be composite (exam: 'all of these')", "explanation": "When asked 'what is true about entity attributes', answer is often 'all of the above' including simple, composite, and multi-valued."}
+    ],
+    "confusedConcepts": [
+      {"conceptA": "Strong Entity", "conceptB": "Weak Entity", "difference": "Strong has its own key attribute. Weak depends on another entity (owner) and uses partial key.", "howToRemember": "Strong = independent adult. Weak = child depending on parent for identity."},
+      {"conceptA": "Total Participation", "conceptB": "Partial Participation", "difference": "Total (double line): ALL entities must participate. Partial (single line): SOME entities may not participate.", "howToRemember": "Total = mandatory attendance. Partial = optional attendance."},
+      {"conceptA": "Composite Attribute", "conceptB": "Multi-valued Attribute", "difference": "Composite: can be split into parts (Name → First+Last). Multi-valued: can have multiple values (Phone numbers).", "howToRemember": "Composite = splitting a pizza into slices. Multi-valued = having multiple pizzas."}
+    ],
+    "quickRevision": [
+      {"topic": "ER Shapes", "keyPoints": ["Rectangle = Entity", "Diamond = Relationship", "Ellipse = Attribute", "Double versions = Weak/Multi-valued"]},
+      {"topic": "Keys", "keyPoints": ["Primary key: uniquely identifies entity", "Candidate key: minimal superkey", "Super key: any set that uniquely identifies", "Foreign key: references another table's PK"]},
+      {"topic": "Cardinality", "keyPoints": ["1:1 = one to one", "1:M = one to many", "M:N = many to many", "Student-Course = M:N (classic exam question)"]}
+    ],
+    "totalQuestions": 15
+  },
+  {
+    "id": "ch3",
+    "number": 3,
+    "title": "Enhanced ER & ER-to-Relational Mapping",
+    "lectures": ["L4"],
+    "icon": "🔀",
+    "color": "#00b894",
+    "summary": "Covers Enhanced ER concepts (specialization, generalization, superclass/subclass, union types) and rules for mapping ER diagrams to relational schemas.",
+    "definitions": [
+      {"term": "Specialization", "definition": "Top-down process of defining subclasses of an entity type by identifying distinguishing characteristics.", "example": "EMPLOYEE specialized into SECRETARY, ENGINEER, TECHNICIAN."},
+      {"term": "Generalization", "definition": "Bottom-up process of identifying common characteristics among entity types and creating a generalized superclass.", "example": "CAR and TRUCK generalized into VEHICLE."},
+      {"term": "Superclass/Subclass", "definition": "Superclass is the parent entity. Subclass inherits all attributes of the superclass and may have additional specific attributes.", "example": "PERSON (superclass) → EMPLOYEE, STUDENT (subclasses)."},
+      {"term": "Disjoint Constraint (d)", "definition": "An entity can be a member of at most ONE subclass. Marked with 'd' in the circle.", "example": "A person is either MALE or FEMALE, not both."},
+      {"term": "Overlapping Constraint (o)", "definition": "An entity can be a member of MORE THAN ONE subclass. Marked with 'o' in the circle.", "example": "An employee can be both a MANAGER and an ENGINEER."},
+      {"term": "Total Specialization", "definition": "Every entity in the superclass MUST belong to at least one subclass. Double line to circle.", "example": "Every PERSON must be either STUDENT or EMPLOYEE."},
+      {"term": "Partial Specialization", "definition": "An entity in the superclass may NOT belong to any subclass. Single line to circle.", "example": "Not every EMPLOYEE needs to be a MANAGER."},
+      {"term": "Union Type (Category)", "definition": "A subclass that has multiple parent entity types (multiple superclasses). Differs from specialization which has one parent.", "example": "OWNER can be a PERSON or a COMPANY (two different parent types)."},
+      {"term": "Specialization Hierarchy", "definition": "Each subclass has only one parent superclass. Forms a tree structure.", "example": "EMPLOYEE → ENGINEER → SENIOR_ENGINEER (single-parent chain)."},
+      {"term": "Specialization Lattice", "definition": "A subclass can have multiple superclasses. Differs from hierarchy.", "example": "STUDENT_EMPLOYEE inherits from both STUDENT and EMPLOYEE."}
+    ],
+    "mustKnowConcepts": [
+      {"title": "ER-to-Relational Mapping Rules", "description": "Step 1: Map regular entities → tables. Step 2: Map weak entities (include owner's PK). Step 3: Map 1:1 relationships (FK on either side, prefer total participation side). Step 4: Map 1:M (FK on M-side). Step 5: Map M:N (create new junction table). Step 6: Map multi-valued attributes (separate table).", "importance": "critical", "examFrequency": 6},
+      {"title": "M:N Mapping Creates Additional Relation", "description": "Many-to-many relationships generate an additional/new relation (junction table) containing FKs from both entities.", "importance": "critical", "examFrequency": 6},
+      {"title": "Disjoint (d) vs Overlapping (o)", "description": "'d' in circle: member of at most ONE subclass. 'o' in circle: can be member of MULTIPLE subclasses.", "importance": "critical", "examFrequency": 5},
+      {"title": "Total vs Partial Specialization", "description": "Total (double line): every superclass entity MUST be in some subclass. Partial (single line): some may not be in any subclass.", "importance": "high", "examFrequency": 4},
+      {"title": "Recursive Relationship Mapping", "description": "A relationship from entity to itself. Mapped by adding a FK in the same table referencing its own PK.", "importance": "high", "examFrequency": 3},
+      {"title": "Counting Relations from ERD", "description": "1:1 → usually 1-2 relations. 1:M → 2 relations (FK on M-side). M:N → 3 relations (extra junction table). Weak entity → included with owner's PK.", "importance": "critical", "examFrequency": 5}
+    ],
+    "examTricks": [
+      {"trick": "M:N mapping always generates an ADDITIONAL relation — answer is never 'merge' or 'ignore'", "explanation": "This is tested almost every year. M:N → new table with both PKs as composite key."},
+      {"trick": "Recursive relationship = FK referencing own table's PK", "explanation": "Example: EMPLOYEE supervises EMPLOYEE. Add Supervisor_SSN FK in EMPLOYEE table."},
+      {"trick": "Counting relations from ERD: count entities + extra tables for M:N relationships", "explanation": "Two entities with 1:1 = 1 or 2 tables. Two entities with M:N = 3 tables."},
+      {"trick": "Leaf node in specialization hierarchy has no subclasses", "explanation": "A leaf node is the bottom-most subclass — it has no further specializations."},
+      {"trick": "Lattice vs Hierarchy: lattice allows multiple superclasses", "explanation": "Hierarchy = one parent per subclass (tree). Lattice = multiple parents allowed (graph)."}
+    ],
+    "confusedConcepts": [
+      {"conceptA": "Specialization", "conceptB": "Generalization", "difference": "Specialization is top-down (dividing entity into subgroups). Generalization is bottom-up (combining entities into superclass).", "howToRemember": "Specialization = zooming IN. Generalization = zooming OUT."},
+      {"conceptA": "Union Type (Category)", "conceptB": "Specialization", "difference": "Union type has MULTIPLE parent entities. Specialization has ONE parent entity.", "howToRemember": "Union = child with two different families. Specialization = siblings in same family."},
+      {"conceptA": "Hierarchy", "conceptB": "Lattice", "difference": "Hierarchy: each subclass has exactly one parent (tree). Lattice: a subclass can have multiple parents.", "howToRemember": "Hierarchy = family tree. Lattice = complex web of relationships."}
+    ],
+    "quickRevision": [
+      {"topic": "Mapping Rules", "keyPoints": ["1:1 → FK on either side (prefer total participation)", "1:M → FK on the M (many) side", "M:N → New junction table with both PKs", "Weak entity → Include owner's PK in its table"]},
+      {"topic": "EER Constraints", "keyPoints": ["d = disjoint (one subclass only)", "o = overlapping (multiple subclasses)", "Total = must belong to a subclass (double line)", "Partial = may not belong (single line)"]},
+      {"topic": "Specialization Circle Letters", "keyPoints": ["(d) = disjoint", "(o) = overlapping", "(m) = member of one or more subclasses (overlapping concept)"]}
+    ],
+    "totalQuestions": 15
+  }
+]

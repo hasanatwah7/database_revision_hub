@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Database Systems Revision Hub</title>
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="A premium, interactive database revision platform to prepare for final exams. Track progress, simulate exams, and practice chapters.">
+  <meta name="author" content="Database Revision Team">
+  
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+  <!-- Mobile Header -->
+  <header class="mobile-header">
+    <div class="d-flex align-items-center gap-2">
+      <div class="brand-logo">DB</div>
+      <span class="brand-name font-outfit">Revision Hub</span>
+    </div>
+    <div class="d-flex align-items-center gap-3">
+      <button class="btn text-white fs-4 p-0" id="theme-toggle-btn-mobile" aria-label="Toggle Theme">
+        <i class="bi bi-sun"></i>
+      </button>
+      <button class="btn text-white fs-3 p-0" id="sidebar-toggle-btn" aria-label="Toggle Navigation">
+        <i class="bi bi-list"></i>
+      </button>
+    </div>
+  </header>
+
+  <div id="app-layout">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-logo">DB</div>
+        <span class="brand-name">Revision Hub</span>
+      </div>
+
+      <nav>
+        <ul class="nav-menu">
+          <li class="nav-item">
+            <a href="#dashboard"><i class="bi bi-grid-1x2-fill"></i> Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="#chapters"><i class="bi bi-book-half"></i> Study Chapters</a>
+          </li>
+          <li class="nav-item">
+            <a href="#exams"><i class="bi bi-file-earmark-text-fill"></i> Past Exams</a>
+          </li>
+          <li class="nav-item">
+            <a href="#predictions"><i class="bi bi-graph-up-arrow"></i> Predictions</a>
+          </li>
+          <li class="nav-item">
+            <a href="#analytics"><i class="bi bi-bar-chart-line-fill"></i> Analytics</a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Theme Switcher -->
+      <div class="px-1 my-3">
+        <button class="btn btn-outline-glass w-100 d-flex align-items-center justify-content-center gap-2 py-2" id="theme-toggle-btn">
+          <i class="bi bi-sun" id="theme-icon"></i>
+          <span id="theme-text">Light Mode</span>
+        </button>
+      </div>
+
+      <!-- Sidebar Progress summary widget -->
+      <div class="user-summary-widget mt-auto">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <span class="text-xs text-muted">Overall Study Progress</span>
+          <span class="text-xs text-white fw-bold" id="sidebar-progress-percent">0%</span>
+        </div>
+        <div class="custom-progress mb-3">
+          <div class="custom-progress-bar cyan" id="sidebar-progress-bar" style="width: 0%"></div>
+        </div>
+        <div class="d-flex justify-content-between text-xs text-muted">
+          <span>Quizzes: <strong class="text-white" id="sidebar-quizzes-count">0</strong></span>
+          <span>Exams: <strong class="text-white" id="sidebar-exams-count">0</strong></span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Panel -->
+    <main class="main-content" id="main-content-view">
+      
+      <!-- Dashboard Section -->
+      <section class="app-section" id="dashboard-section">
+        <!-- Rendered dynamically by app.js -->
+      </section>
+
+      <!-- Chapters Section -->
+      <section class="app-section" id="chapters-section">
+        <!-- Rendered dynamically by app.js -->
+      </section>
+
+      <!-- Exams Section -->
+      <section class="app-section" id="exams-section">
+        <!-- Rendered dynamically by app.js -->
+      </section>
+
+      <!-- Predictions Section -->
+      <section class="app-section" id="predictions-section">
+        <!-- Rendered dynamically by app.js -->
+      </section>
+
+      <!-- Analytics Section -->
+      <section class="app-section" id="analytics-section">
+        <!-- Rendered dynamically by app.js -->
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Main Application Script -->
+  <script src="js/app.js"></script>
+</body>
+</html>

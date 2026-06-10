@@ -1,0 +1,148 @@
+[
+  {
+    "id": "ch7",
+    "number": 7,
+    "title": "SQL Subqueries & Advanced Queries",
+    "lectures": ["L8"],
+    "icon": "🔍",
+    "color": "#a29bfe",
+    "summary": "Covers nested queries, correlated subqueries, EXISTS, IN, ANY, ALL operators, LIKE patterns, DISTINCT, ORDER BY, and BETWEEN.",
+    "definitions": [
+      {"term": "Subquery (Nested Query)", "definition": "A SELECT statement embedded inside another SQL statement. Can appear in WHERE, FROM, or SELECT clauses.", "example": "SELECT Name FROM Emp WHERE Salary > (SELECT AVG(Salary) FROM Emp);"},
+      {"term": "Correlated Subquery", "definition": "A subquery that references columns from the outer query. Executed once for each row of the outer query.", "example": "SELECT E.Name FROM Emp E WHERE E.Salary > (SELECT AVG(Salary) FROM Emp WHERE DeptID = E.DeptID);"},
+      {"term": "IN Operator", "definition": "Tests if a value matches any value in a list or subquery result. Equivalent to multiple OR conditions.", "example": "WHERE DeptID IN (1, 2, 3) same as DeptID=1 OR DeptID=2 OR DeptID=3"},
+      {"term": "EXISTS Operator", "definition": "Tests whether a subquery returns any rows. Returns TRUE if subquery has at least one row.", "example": "WHERE EXISTS (SELECT * FROM Orders WHERE Orders.CustID = Customers.ID);"},
+      {"term": "ANY/SOME Operator", "definition": "Compares a value to any value returned by a subquery. TRUE if comparison is true for at least one value.", "example": "WHERE Salary > ANY (SELECT Salary FROM Emp WHERE Dept='Sales');"},
+      {"term": "ALL Operator", "definition": "Compares a value to all values returned by a subquery. TRUE only if comparison is true for every value.", "example": "WHERE Salary > ALL (SELECT Salary FROM Emp WHERE Dept='Sales');"},
+      {"term": "LIKE Operator", "definition": "Pattern matching operator. % = any sequence of characters. _ = exactly one character.", "example": "'t%' matches names starting with t. '%t%' matches names containing t. '_t%' matches t as second character."},
+      {"term": "DISTINCT", "definition": "Removes duplicate rows from the result set.", "example": "SELECT DISTINCT Dept FROM Employee;"},
+      {"term": "ORDER BY", "definition": "Sorts query results. ASC (ascending, default) or DESC (descending).", "example": "SELECT * FROM Emp ORDER BY Salary DESC;"},
+      {"term": "BETWEEN", "definition": "Filters values within a range (inclusive).", "example": "WHERE Salary BETWEEN 3000 AND 5000;"},
+      {"term": "IS NOT NULL", "definition": "The correct operator for removing null values from results. Not IS NONE or LIKE.", "example": "WHERE Salary IS NOT NULL;"}
+    ],
+    "mustKnowConcepts": [
+      {"title": "LIKE Pattern Matching", "description": "% = zero or more characters. _ = exactly one character. 't%' = starts with t. '%t' = ends with t. '%t%' = contains t. '_t%' = t is second character.", "importance": "critical", "examFrequency": 6},
+      {"title": "ORDER BY Default", "description": "If ASC or DESC is not specified, ASC (ascending) is the default.", "importance": "high", "examFrequency": 5},
+      {"title": "Subquery in WHERE Clause", "description": "Most common pattern. The subquery provides a value or set of values for the outer WHERE condition.", "importance": "critical", "examFrequency": 5},
+      {"title": "IN vs ANY vs ALL", "description": "IN: equals any in list. ANY: comparison true for at least one. ALL: comparison true for every value.", "importance": "high", "examFrequency": 4},
+      {"title": "IS NOT NULL for Removing NULLs", "description": "IS NOT NULL is the correct operator. Not IS NONE, not LIKE, not = NOT NULL.", "importance": "high", "examFrequency": 4},
+      {"title": "Multi-column ORDER BY", "description": "Can sort by multiple columns: ORDER BY city ASC, assets DESC. First sorts by city, then within each city by assets descending.", "importance": "high", "examFrequency": 3}
+    ],
+    "examTricks": [
+      {"trick": "SELECT * FROM student WHERE name LIKE 't%' — starts with 't'", "explanation": "Not '%t%' (contains t), not '%t' (ends with t), not '_t%' (t as second char). 't%' = starts with t."},
+      {"trick": "Default ORDER BY is ASC, not DESC", "explanation": "If you don't specify, results are ascending. This is tested frequently."},
+      {"trick": "IN operator tests membership in a list", "explanation": "col IN (v1,v2,v3) is same as col=v1 OR col=v2 OR col=v3. Tests column value against a specified list."},
+      {"trick": "IS NOT NULL removes nulls — not IS NONE or = NOT NULL", "explanation": "SQL uses IS NULL / IS NOT NULL syntax. You cannot use = or != with NULL."},
+      {"trick": "ANY with subquery: name LIKE pattern uses WHERE, not HAVING", "explanation": "Use WHERE for row-level filtering with LIKE. HAVING is only for aggregate conditions."}
+    ],
+    "confusedConcepts": [
+      {"conceptA": "IN", "conceptB": "EXISTS", "difference": "IN checks if a value is in a set. EXISTS checks if a subquery returns any rows at all.", "howToRemember": "IN = is this item on the shopping list? EXISTS = is there any shopping list at all?"},
+      {"conceptA": "ANY", "conceptB": "ALL", "difference": "ANY: true if condition holds for at least one value. ALL: true only if condition holds for every value.", "howToRemember": "ANY = at least one friend agrees. ALL = every single friend agrees."},
+      {"conceptA": "% (percent)", "conceptB": "_ (underscore)", "difference": "% matches zero or more characters (any length). _ matches exactly one character.", "howToRemember": "% = elastic band (stretches to any length). _ = one blank space on a form."}
+    ],
+    "quickRevision": [
+      {"topic": "LIKE Patterns", "keyPoints": ["'t%' = starts with t", "'%t' = ends with t", "'%t%' = contains t", "'_t%' = t as 2nd character", "'a__' = a followed by exactly 2 chars"]},
+      {"topic": "Comparison Operators", "keyPoints": ["IN = value in list", "EXISTS = subquery has rows", "ANY = at least one match", "ALL = every value matches", "BETWEEN = inclusive range"]},
+      {"topic": "Query Clauses", "keyPoints": ["DISTINCT removes duplicates", "ORDER BY ASC (default) or DESC", "IS NULL / IS NOT NULL for nulls", "WHERE filters before GROUP BY"]}
+    ],
+    "totalQuestions": 15
+  },
+  {
+    "id": "ch8",
+    "number": 8,
+    "title": "Normalization (1NF → BCNF)",
+    "lectures": ["L9", "L10"],
+    "icon": "📋",
+    "color": "#e84393",
+    "summary": "Covers functional dependencies, data anomalies, normalization process, and normal forms from 1NF through BCNF. Includes decomposition techniques and identifying violations.",
+    "definitions": [
+      {"term": "Functional Dependency (FD)", "definition": "A constraint X → Y meaning: if two tuples have same X value, they must have same Y value. X determines Y.", "example": "SSN → Name (SSN determines Name). StudentID → Name, GPA."},
+      {"term": "1NF (First Normal Form)", "definition": "A relation is in 1NF if: (1) All attribute values are atomic (indivisible), (2) No repeating groups of columns.", "example": "A column with 'Math,Science' violates 1NF. Split into separate rows."},
+      {"term": "2NF (Second Normal Form)", "definition": "In 1NF AND no partial dependency — every non-key attribute depends on the WHOLE primary key, not just part of it. Only relevant with composite keys.", "example": "R(StudentID, CourseID, CourseFee): CourseFee depends only on CourseID (partial dep) → violates 2NF."},
+      {"term": "3NF (Third Normal Form)", "definition": "In 2NF AND no transitive dependency — no non-key attribute depends on another non-key attribute.", "example": "If A→B and B→C (both non-key), then A→C is transitive. Remove by decomposing."},
+      {"term": "BCNF (Boyce-Codd Normal Form)", "definition": "Every determinant (left side of every non-trivial FD) must be a superkey. Stricter than 3NF.", "example": "If X→Y and X is not a superkey, the relation violates BCNF."},
+      {"term": "Partial Dependency", "definition": "A non-key attribute depends on only PART of a composite primary key. Violates 2NF.", "example": "Key=(A,B), FD: A→C means C depends on part of key → partial dependency."},
+      {"term": "Transitive Dependency", "definition": "A non-key attribute depends on another non-key attribute. If A→B and B→C where B is not a key, then A→C is transitive. Violates 3NF.", "example": "StudentID→State, State→Country: StudentID→Country is transitive."},
+      {"term": "Data Anomalies", "definition": "Problems caused by poor design: Insertion (can't add data without other data), Deletion (losing data when deleting), Modification (inconsistency when updating).", "example": "Deleting last employee of a dept loses dept data (deletion anomaly)."},
+      {"term": "Decomposition", "definition": "Splitting a relation into smaller relations to achieve a higher normal form while preserving dependencies.", "example": "R(A,B,C) with A→B, B→C decomposed to R1(A,B) and R2(B,C) for 3NF."},
+      {"term": "Prime Attribute", "definition": "An attribute that is part of any candidate key. Non-prime = not part of any candidate key.", "example": "If keys are {A,B} and {A,C}, then A, B, C are prime attributes."}
+    ],
+    "mustKnowConcepts": [
+      {"title": "Normal Form Hierarchy", "description": "1NF ⊂ 2NF ⊂ 3NF ⊂ BCNF. Each higher form is stricter. If a relation fails the n-th NF test, highest NF is (n-1).", "importance": "critical", "examFrequency": 6},
+      {"title": "Single-Attribute Key → Automatically 2NF", "description": "If the primary key has only one attribute, there cannot be partial dependencies, so it's automatically in at least 2NF.", "importance": "critical", "examFrequency": 5},
+      {"title": "Classic 3NF Violation: A→B, B→C", "description": "R(A,B,C) with FDs A→B and B→C where key is A. A→B→C is transitive. R is in 2NF but violates 3NF. Decompose to R1(A,B) and R2(B,C).", "importance": "critical", "examFrequency": 6},
+      {"title": "Classic 2NF Violation: Partial Dependency", "description": "R(X,Y,Z) with key (X,Y) and FD X→Z. Z depends on part of key → partial dependency → violates 2NF.", "importance": "critical", "examFrequency": 6},
+      {"title": "BCNF: Every Determinant is a Superkey", "description": "BCNF is stricter than 3NF. For every FD X→Y, X must be a superkey. 3NF allows non-superkey determinants if Y is prime.", "importance": "high", "examFrequency": 5},
+      {"title": "Finding Highest Normal Form", "description": "Step 1: Find candidate keys. Step 2: Classify prime vs non-prime attributes. Step 3: Check 1NF→2NF→3NF→BCNF sequentially. Stop at first violation.", "importance": "critical", "examFrequency": 5},
+      {"title": "Normalization Minimizes Redundancy", "description": "The primary goal of normalization is to minimize redundancy, not consistency or fields or integrity.", "importance": "high", "examFrequency": 4}
+    ],
+    "examTricks": [
+      {"trick": "A→B and B→C: this is 2NF but NOT 3NF (transitive dependency)", "explanation": "This is the most frequently tested scenario. The transitive chain violates 3NF."},
+      {"trick": "Single-column PK means automatically at least 2NF", "explanation": "No partial dependencies possible with a single-attribute key."},
+      {"trick": "If relation fails n-th NF, highest NF = n-1", "explanation": "Example: fails 3NF test → highest normal form is 2NF."},
+      {"trick": "ProductID → ProductName in table with composite key (OrderID, ProductID) is a PARTIAL dependency", "explanation": "ProductName depends on ProductID alone, which is only PART of the key. This violates 2NF."},
+      {"trick": "1NF requires atomic values AND no repeating groups", "explanation": "Both conditions must hold. Atomic = no lists/sets in a column. No repeating = no duplicate column groups."},
+      {"trick": "Non-key column dependent on another non-key column = transitive dependency", "explanation": "This violates 3NF. The dependency goes through a non-key intermediary."},
+      {"trick": "Decomposition for 3NF: R(A,B,C,D) with A,B→C and C→D becomes R1(A,B,C) and R2(C,D)", "explanation": "Split to separate the transitive part. R1 covers AB→C, R2 covers C→D."},
+      {"trick": "A relation in 1NF doesn't contain repeating groups, composite attributes as values, or multi-valued attributes in columns", "explanation": "1NF is about atomicity. No arrays, no sets, no lists in any cell."}
+    ],
+    "confusedConcepts": [
+      {"conceptA": "Partial Dependency", "conceptB": "Transitive Dependency", "difference": "Partial: non-key depends on PART of composite key (violates 2NF). Transitive: non-key depends on another non-key (violates 3NF).", "howToRemember": "Partial = shortcut through part of the key. Transitive = chain through a non-key middleman."},
+      {"conceptA": "3NF", "conceptB": "BCNF", "difference": "3NF allows non-superkey determinants if the dependent is a prime attribute. BCNF requires ALL determinants to be superkeys.", "howToRemember": "3NF = lenient teacher (allows exceptions). BCNF = strict teacher (no exceptions)."},
+      {"conceptA": "Candidate Key", "conceptB": "Superkey", "difference": "Superkey: any set of attributes that uniquely identifies tuples. Candidate key: minimal superkey (remove any attribute and it's no longer unique).", "howToRemember": "Superkey = any team that can do the job. Candidate key = smallest team that can still do the job."}
+    ],
+    "quickRevision": [
+      {"topic": "Normal Forms", "keyPoints": ["1NF: atomic values, no repeating groups", "2NF: 1NF + no partial dependencies", "3NF: 2NF + no transitive dependencies", "BCNF: every determinant is a superkey"]},
+      {"topic": "Violation Detection", "keyPoints": ["Partial dep → violates 2NF (only with composite keys)", "Transitive dep → violates 3NF", "Non-superkey determinant → violates BCNF", "Single-attribute key → at least 2NF automatically"]},
+      {"topic": "Decomposition", "keyPoints": ["A→B, B→C: split into R1(A,B) and R2(B,C)", "Must preserve dependencies", "Must be lossless join", "Goal: eliminate anomalies"]}
+    ],
+    "totalQuestions": 20
+  },
+  {
+    "id": "ch9",
+    "number": 9,
+    "title": "Query Processing & Relational Algebra",
+    "lectures": ["L11"],
+    "icon": "⚡",
+    "color": "#fd79a8",
+    "summary": "Covers relational algebra operators (selection σ, projection π, join ⨝, cartesian product ×), query processing steps, query trees, and heuristic query optimization.",
+    "definitions": [
+      {"term": "Selection (σ)", "definition": "Filters rows/tuples based on a condition. Like WHERE in SQL. σ selects ROWS, not columns.", "example": "σ_{Dept='Sales'}(Employee) returns only employees in Sales department."},
+      {"term": "Projection (π)", "definition": "Selects specific columns/attributes. Removes other columns. Like SELECT columns in SQL.", "example": "π_{Name,Salary}(Employee) returns only Name and Salary columns."},
+      {"term": "Cartesian Product (×)", "definition": "Combines every row of R with every row of S. 'Meaningless' without a subsequent selection/condition.", "example": "If R has 3 rows and S has 4 rows, R × S has 12 rows."},
+      {"term": "Join (⨝)", "definition": "Combines related tuples from two relations based on a condition. Equivalent to Cartesian product followed by selection.", "example": "Employee ⨝_{Dno=Dnumber} Department joins on department number."},
+      {"term": "Relational Algebra", "definition": "A procedural query language that works on relations to define new relations without changing originals.", "example": "σ, π, ×, ⨝, ∪, ∩, − are relational algebra operations."},
+      {"term": "Query Tree", "definition": "A tree representation of a relational algebra expression. Leaves = base relations, internal nodes = RA operations.", "example": "Root node might be π (projection), with σ (selection) below, and table leaves at bottom."},
+      {"term": "Query Processing Steps", "definition": "Scanning (lexical analysis), Parsing (syntax check), Validation (semantic check), Optimization, Execution.", "example": "Parser checks SQL syntax → Validator checks table/column names exist → Optimizer finds best plan."},
+      {"term": "Heuristic Optimization", "definition": "Rules to improve query trees: push selections down, push projections down, replace cartesian+selection with join.", "example": "Apply σ early to reduce intermediate result sizes. Move σ close to leaf nodes."}
+    ],
+    "mustKnowConcepts": [
+      {"title": "σ (Selection) vs π (Projection)", "description": "σ filters ROWS (horizontal). π selects COLUMNS (vertical). σ is like WHERE. π is like SELECT columns. π removes columns, not rows.", "importance": "critical", "examFrequency": 6},
+      {"title": "Relational Algebra is Procedural", "description": "RA is a procedural query language. A language producing relations derivable using RA is relationally complete.", "importance": "high", "examFrequency": 4},
+      {"title": "σ_C(R × S) = R ⨝_C S", "description": "Selection on a Cartesian product with join condition equals a join. This transformation is a key optimization.", "importance": "critical", "examFrequency": 5},
+      {"title": "Heuristic: Push Selection Down", "description": "Apply σ as early as possible (close to leaves) to reduce the size of intermediate results.", "importance": "high", "examFrequency": 4},
+      {"title": "Parser Checks Syntax", "description": "In query processing, the parser checks query syntax. Optimizer chooses execution plan. Validator checks semantics.", "importance": "high", "examFrequency": 4},
+      {"title": "RA Operations Don't Change Originals", "description": "Relational algebra operations work on relations to define new relations WITHOUT changing/storing the original relations.", "importance": "high", "examFrequency": 4},
+      {"title": "Projection Removes Columns", "description": "π (projection) selects specified columns, discarding others. It removes columns, not rows.", "importance": "critical", "examFrequency": 5}
+    ],
+    "examTricks": [
+      {"trick": "σ selects ROWS (tuples), π selects COLUMNS (attributes) — don't mix them up", "explanation": "σ_{Dept='Sales'}(Emp) = rows where Dept is Sales. π_{Name}(Emp) = only the Name column."},
+      {"trick": "Cartesian product is 'meaningless' without a subsequent selection", "explanation": "R × S gives every pair. You need σ or a join condition to make it useful."},
+      {"trick": "Relational algebra is PROCEDURAL query language", "explanation": "Not DDL, not meta language, not non-procedural. RA is procedural."},
+      {"trick": "Projection operator π removes COLUMNS (Lecture 11)", "explanation": "π removes columns. It does NOT remove rows, NULL values, or duplicate rows (well, it removes duplicate rows in formal RA)."},
+      {"trick": "Query optimization minimizes execution COST (I/O, CPU), not number of tables or result size", "explanation": "The goal is to minimize resource usage, not minimize output."},
+      {"trick": "SQL to RA conversion: σ corresponds to WHERE, π corresponds to SELECT columns", "explanation": "SELECT Name FROM Emp WHERE Dept='Sales' = π_{Name}(σ_{Dept='Sales'}(Employee))"}
+    ],
+    "confusedConcepts": [
+      {"conceptA": "Selection (σ)", "conceptB": "Projection (π)", "difference": "σ filters rows (horizontal slice, like WHERE). π selects columns (vertical slice, like SELECT columns).", "howToRemember": "σ = slicing cake horizontally (layers/rows). π = slicing vertically (columns/portions)."},
+      {"conceptA": "Cartesian Product (×)", "conceptB": "Join (⨝)", "difference": "× gives ALL combinations (no condition). ⨝ gives only matching combinations (with condition). ⨝ = × followed by σ.", "howToRemember": "× = mixing all ingredients randomly. ⨝ = combining only ingredients that go together."},
+      {"conceptA": "Procedural", "conceptB": "Non-procedural", "difference": "Procedural (RA): specify HOW to get results step by step. Non-procedural (SQL/Calculus): specify WHAT you want, system decides how.", "howToRemember": "Procedural = giving GPS turn-by-turn directions. Non-procedural = telling GPS the destination."}
+    ],
+    "quickRevision": [
+      {"topic": "RA Operators", "keyPoints": ["σ (sigma) = selection = filter rows (WHERE)", "π (pi) = projection = select columns (SELECT)", "× = cartesian product = all combinations", "⨝ = join = matching combinations", "∪ = union, ∩ = intersection, − = difference"]},
+      {"topic": "Query Processing", "keyPoints": ["Scanner → Parser → Validator → Optimizer → Executor", "Parser checks SYNTAX", "Validator checks SEMANTICS", "Optimizer minimizes COST"]},
+      {"topic": "Optimization Rules", "keyPoints": ["Push σ down (apply selections early)", "Push π down (project early)", "Replace × + σ with ⨝ (join)", "Reorder joins (most selective first)"]}
+    ],
+    "totalQuestions": 15
+  }
+]

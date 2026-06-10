@@ -1,0 +1,133 @@
+[
+  {
+    "id": "ch4",
+    "number": 4,
+    "title": "SQL Basics — DDL & DML",
+    "lectures": ["L5"],
+    "icon": "💻",
+    "color": "#e17055",
+    "summary": "Covers SQL fundamentals: Data Definition Language (CREATE, ALTER, DROP), Data Manipulation Language (INSERT, UPDATE, DELETE), basic SELECT-FROM-WHERE queries, data types, and constraints.",
+    "definitions": [
+      {"term": "DDL (Data Definition Language)", "definition": "SQL commands that define/modify the database structure: CREATE, ALTER, DROP.", "example": "CREATE TABLE Student(ID INT PRIMARY KEY, Name VARCHAR(50));"},
+      {"term": "DML (Data Manipulation Language)", "definition": "SQL commands that manipulate data: INSERT, UPDATE, DELETE, SELECT.", "example": "INSERT INTO Student VALUES (1, 'Ahmad');"},
+      {"term": "PRIMARY KEY", "definition": "A constraint that uniquely identifies each row. Cannot be NULL. Only ONE per table.", "example": "CREATE TABLE T(id INT PRIMARY KEY);"},
+      {"term": "FOREIGN KEY", "definition": "A constraint that ensures referential integrity between tables. References a primary key in another table.", "example": "FOREIGN KEY (DeptID) REFERENCES Department(ID);"},
+      {"term": "NOT NULL", "definition": "A constraint that prevents NULL values in a column.", "example": "Name VARCHAR(50) NOT NULL"},
+      {"term": "UNIQUE", "definition": "A constraint that ensures all values in a column are different. Unlike PK, a table can have multiple UNIQUE columns.", "example": "Email VARCHAR(100) UNIQUE"},
+      {"term": "CHECK", "definition": "A constraint that limits the values that can be placed in a column.", "example": "CHECK (Age >= 18)"},
+      {"term": "ALTER TABLE", "definition": "Used to add, delete, or modify columns and constraints in an existing table.", "example": "ALTER TABLE Student ADD Email VARCHAR(100);"},
+      {"term": "VARCHAR vs CHAR", "definition": "VARCHAR(n) stores variable-length strings (saves space). CHAR(n) stores fixed-length strings (padded with spaces).", "example": "VARCHAR(20) with 'Avi' uses 3 spaces. CHAR(20) with 'Avi' uses 20 spaces."}
+    ],
+    "mustKnowConcepts": [
+      {"title": "SELECT-FROM-WHERE Structure", "description": "SELECT columns FROM table WHERE condition. SELECT and FROM are mandatory. WHERE is optional. Correct order: SELECT, FROM, WHERE.", "importance": "critical", "examFrequency": 6},
+      {"title": "Composite Primary Key Syntax", "description": "For composite keys, use: PRIMARY KEY (col1, col2) as a table constraint, not inline.", "importance": "critical", "examFrequency": 5},
+      {"title": "DELETE vs DROP vs TRUNCATE", "description": "DELETE FROM table: removes rows (can use WHERE). DROP TABLE: removes entire table structure. DELETE FROM table (no WHERE): clears all rows but keeps structure.", "importance": "high", "examFrequency": 5},
+      {"title": "DDL vs DML Classification", "description": "DDL: CREATE, ALTER, DROP (schema changes). DML: INSERT, UPDATE, DELETE, SELECT (data changes). TCL: COMMIT, ROLLBACK. DCL: GRANT, REVOKE.", "importance": "critical", "examFrequency": 5},
+      {"title": "WHERE Clause is Critical with DELETE", "description": "DELETE without WHERE deletes ALL records. Always use WHERE to target specific rows.", "importance": "high", "examFrequency": 4},
+      {"title": "NULL Comparison", "description": "Cannot use = or != with NULL. Must use IS NULL or IS NOT NULL. Comparing with = NULL yields UNKNOWN, not TRUE.", "importance": "critical", "examFrequency": 4}
+    ],
+    "examTricks": [
+      {"trick": "Correct keyword order: SELECT → FROM → WHERE (not SELECT → WHERE → FROM)", "explanation": "This is tested frequently. The order matters in SQL syntax."},
+      {"trick": "INSERT is DML, ALTER is DDL — don't mix them up", "explanation": "INSERT manipulates data. ALTER changes table structure."},
+      {"trick": "A table can have only ONE primary key but MULTIPLE unique constraints", "explanation": "Primary key = unique + not null. Only one allowed per table."},
+      {"trick": "VARCHAR(20) with 'Avi' has 3 spaces, CHAR(20) has 20 spaces", "explanation": "This exact question appeared in the 2021 exam. VARCHAR = variable length, CHAR = fixed."},
+      {"trick": "To add a row use INSERT, not ADD/CREATE/MAKE", "explanation": "INSERT INTO table VALUES(...); is the correct syntax."}
+    ],
+    "confusedConcepts": [
+      {"conceptA": "DELETE", "conceptB": "DROP", "difference": "DELETE removes rows from a table (DML, table still exists). DROP removes the entire table structure (DDL).", "howToRemember": "DELETE = erasing text from a page. DROP = throwing away the entire page."},
+      {"conceptA": "WHERE", "conceptB": "HAVING", "difference": "WHERE filters individual rows BEFORE grouping. HAVING filters groups AFTER aggregation with GROUP BY.", "howToRemember": "WHERE = bouncer at the door. HAVING = judge after the competition."},
+      {"conceptA": "PRIMARY KEY", "conceptB": "UNIQUE", "difference": "PK: unique + not null + only one per table. UNIQUE: unique but allows NULL + multiple per table.", "howToRemember": "PK = national ID (one per person, mandatory). UNIQUE = phone number (unique but optional)."}
+    ],
+    "quickRevision": [
+      {"topic": "SQL Command Categories", "keyPoints": ["DDL: CREATE, ALTER, DROP", "DML: SELECT, INSERT, UPDATE, DELETE", "TCL: COMMIT, ROLLBACK", "DCL: GRANT, REVOKE"]},
+      {"topic": "Constraints", "keyPoints": ["PRIMARY KEY (unique + not null, one per table)", "FOREIGN KEY (referential integrity)", "NOT NULL, UNIQUE, CHECK", "Composite PK: PRIMARY KEY(a, b)"]},
+      {"topic": "Data Types", "keyPoints": ["INT, FLOAT, DECIMAL", "VARCHAR(n) = variable length", "CHAR(n) = fixed length, padded", "DATE, BOOLEAN"]}
+    ],
+    "totalQuestions": 15
+  },
+  {
+    "id": "ch5",
+    "number": 5,
+    "title": "SQL Aggregation & Functions",
+    "lectures": ["L6"],
+    "icon": "📊",
+    "color": "#fdcb6e",
+    "summary": "Covers aggregate functions (COUNT, SUM, AVG, MAX, MIN), GROUP BY clause, HAVING clause, NULL handling in aggregates, and UPDATE with conditions.",
+    "definitions": [
+      {"term": "Aggregate Function", "definition": "Functions that take a collection of values as input and return a single value. The five built-in: COUNT, SUM, AVG, MAX, MIN.", "example": "SELECT COUNT(*), AVG(Salary) FROM Employee;"},
+      {"term": "GROUP BY", "definition": "Groups rows that share a value into summary rows. Used with aggregate functions to compute per-group statistics.", "example": "SELECT Dept, AVG(Salary) FROM Emp GROUP BY Dept;"},
+      {"term": "HAVING", "definition": "Filters groups after aggregation. Similar to WHERE but used for aggregate conditions. Must be used with GROUP BY.", "example": "SELECT Dept, COUNT(*) FROM Emp GROUP BY Dept HAVING COUNT(*) > 5;"},
+      {"term": "COUNT(*)", "definition": "Counts all rows including NULLs. COUNT(column) counts non-NULL values only.", "example": "COUNT(*) returns total rows. COUNT(Salary) skips NULL salaries."},
+      {"term": "AVG with NULLs", "definition": "AVG() ignores NULL values — it only averages non-NULL values.", "example": "If salaries are 100, NULL, 200: AVG = 150 (not 100)."}
+    ],
+    "mustKnowConcepts": [
+      {"title": "Five Built-in Aggregate Functions", "description": "COUNT, SUM, AVG, MAX, MIN. This exact set is tested frequently. Not MULT, DIV, NUMBER, or NAME.", "importance": "critical", "examFrequency": 6},
+      {"title": "GROUP BY + HAVING Order", "description": "Correct order: SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY. HAVING comes AFTER GROUP BY, never before.", "importance": "critical", "examFrequency": 6},
+      {"title": "HAVING vs WHERE", "description": "WHERE filters rows BEFORE grouping. HAVING filters groups AFTER aggregation. HAVING is similar to WHERE but used for groups rather than rows.", "importance": "critical", "examFrequency": 6},
+      {"title": "NULL Handling in Aggregates", "description": "All aggregate functions (SUM, AVG, etc.) ignore NULL values. COUNT(*) counts all rows. COUNT(col) skips NULLs.", "importance": "high", "examFrequency": 3},
+      {"title": "AVG Salary Query Pattern", "description": "SELECT branch_name, AVG(amount) FROM loan GROUP BY branch_name; — must include GROUP BY when selecting non-aggregate with aggregate.", "importance": "critical", "examFrequency": 5}
+    ],
+    "examTricks": [
+      {"trick": "HAVING cannot be used without GROUP BY — it's specifically for filtering groups", "explanation": "HAVING clause must be used with GROUP BY. It cannot be used for pattern matching like LIKE."},
+      {"trick": "The five built-in functions are COUNT, SUM, AVG, MAX, MIN — not MULT or NUMBER", "explanation": "This specific list appears in exams. Wrong options often include MULT, DIV, NUMBER, NAME."},
+      {"trick": "SELECT Dept, SUM(Salary) FROM Emp HAVING SUM(Salary)>5000 GROUP BY Dept is WRONG order", "explanation": "HAVING must come AFTER GROUP BY. Correct: ...GROUP BY Dept HAVING SUM(Salary) > 5000;"},
+      {"trick": "To find mean salary use AVG(salary), not Mean(salary)", "explanation": "SQL has no Mean() function. Use AVG(). Also Sum(salary)/Count(salary) works but Count(staff_ID) doesn't."},
+      {"trick": "Finding largest loan per branch: SELECT branch_name, MAX(amount) FROM loan GROUP BY branch_name", "explanation": "Must GROUP BY branch_name. Cannot use WHERE amount = MAX(amount) directly."}
+    ],
+    "confusedConcepts": [
+      {"conceptA": "WHERE", "conceptB": "HAVING", "difference": "WHERE filters individual rows before grouping. HAVING filters grouped results after aggregation.", "howToRemember": "WHERE = filtering ingredients before cooking. HAVING = tasting the final dish."},
+      {"conceptA": "COUNT(*)", "conceptB": "COUNT(column)", "difference": "COUNT(*) counts all rows including NULLs. COUNT(column) counts only non-NULL values in that column.", "howToRemember": "COUNT(*) = counting all seats. COUNT(person) = counting occupied seats only."}
+    ],
+    "quickRevision": [
+      {"topic": "Aggregate Functions", "keyPoints": ["COUNT, SUM, AVG, MAX, MIN", "All ignore NULLs except COUNT(*)", "Cannot use in WHERE clause", "Use in SELECT or HAVING"]},
+      {"topic": "Query Order", "keyPoints": ["SELECT → FROM → WHERE → GROUP BY → HAVING → ORDER BY", "WHERE before GROUP BY", "HAVING after GROUP BY", "ORDER BY always last"]},
+      {"topic": "Common Patterns", "keyPoints": ["AVG per group: SELECT col, AVG(x) FROM t GROUP BY col", "Filter groups: add HAVING after GROUP BY", "Count distinct: COUNT(DISTINCT col)", "Find max per group: MAX(col) with GROUP BY"]}
+    ],
+    "totalQuestions": 15
+  },
+  {
+    "id": "ch6",
+    "number": 6,
+    "title": "SQL Joins & Set Operations",
+    "lectures": ["L7"],
+    "icon": "🔗",
+    "color": "#00cec9",
+    "summary": "Covers JOIN types (INNER, LEFT/RIGHT/FULL OUTER, NATURAL, CROSS), set operations (UNION, INTERSECT, EXCEPT/MINUS), and self-joins.",
+    "definitions": [
+      {"term": "INNER JOIN", "definition": "Returns only rows where there is a match in BOTH tables. This is the SQL Server default join type.", "example": "SELECT * FROM A INNER JOIN B ON A.id = B.id;"},
+      {"term": "LEFT OUTER JOIN", "definition": "Returns ALL rows from the left table and matching rows from the right. Non-matching right rows show NULL.", "example": "SELECT * FROM Emp LEFT JOIN Dept ON Emp.DeptID = Dept.ID;"},
+      {"term": "RIGHT OUTER JOIN", "definition": "Returns ALL rows from the right table and matching rows from the left. Non-matching left rows show NULL.", "example": "SELECT * FROM Emp RIGHT JOIN Dept ON Emp.DeptID = Dept.ID;"},
+      {"term": "FULL OUTER JOIN", "definition": "Returns ALL rows from both tables. NULLs where there's no match on either side.", "example": "SELECT * FROM A FULL OUTER JOIN B ON A.id = B.id;"},
+      {"term": "NATURAL JOIN", "definition": "Automatically joins tables using columns with the same name in both tables. No ON clause needed.", "example": "SELECT * FROM Emp NATURAL JOIN Dept;"},
+      {"term": "CROSS JOIN (Cartesian Product)", "definition": "Returns every combination of rows from both tables. No join condition. Result size = rows_A × rows_B.", "example": "SELECT * FROM A CROSS JOIN B; — if A has 3 rows and B has 4, result has 12 rows."},
+      {"term": "UNION", "definition": "Combines results of two queries, removing duplicates. Both queries must have same number of columns and compatible types.", "example": "SELECT name FROM Students UNION SELECT name FROM Teachers;"},
+      {"term": "INTERSECT", "definition": "Returns only rows that appear in BOTH query results.", "example": "SELECT id FROM A INTERSECT SELECT id FROM B;"},
+      {"term": "SET DIFFERENCE (EXCEPT/MINUS)", "definition": "Returns rows in the first query that are NOT in the second. Note: set difference is NOT commutative (A-B ≠ B-A).", "example": "SELECT id FROM A EXCEPT SELECT id FROM B;"},
+      {"term": "Self-Join", "definition": "A table joined with itself, typically using aliases. Used for hierarchical data.", "example": "SELECT E1.Name, E2.Name as Manager FROM Emp E1 JOIN Emp E2 ON E1.ManagerID = E2.ID;"}
+    ],
+    "mustKnowConcepts": [
+      {"title": "INNER JOIN is Default", "description": "In SQL Server, INNER JOIN is the default join type. If you write just JOIN, it means INNER JOIN.", "importance": "critical", "examFrequency": 5},
+      {"title": "SEMI JOIN is NOT Standard SQL", "description": "INNER, LEFT/RIGHT/FULL OUTER, CROSS, NATURAL are standard SQL. SEMI JOIN is not an explicit SQL command.", "importance": "high", "examFrequency": 3},
+      {"title": "Union Compatibility", "description": "For UNION/INTERSECT/EXCEPT: both queries must have same number of columns and compatible data types.", "importance": "high", "examFrequency": 4},
+      {"title": "INNER JOIN Returns Only Matches", "description": "INNER JOIN only returns rows where the join condition matches in BOTH tables. No NULLs from non-matches.", "importance": "critical", "examFrequency": 5},
+      {"title": "Set Difference is NOT Commutative", "description": "A EXCEPT B ≠ B EXCEPT A. UNION and INTERSECT are commutative. Difference/EXCEPT is not.", "importance": "high", "examFrequency": 3}
+    ],
+    "examTricks": [
+      {"trick": "SEMI JOIN is NOT a type of standard SQL join", "explanation": "When asked 'which is NOT a join type', SEMI JOIN is the answer. It exists conceptually but not as SQL syntax."},
+      {"trick": "Finding customers with loans: use JOIN between borrower and loan tables, not depositor and account", "explanation": "Read the question carefully — loans vs deposits use different tables."},
+      {"trick": "LIKE '%le%' matches 'le' anywhere in string", "explanation": "% = any characters. _ = single character. '%le%' finds 'angle', 'element', etc."},
+      {"trick": "INNER join vs OUTER join: INNER = only matches, OUTER = all from one/both sides", "explanation": "LEFT OUTER includes ALL left rows. RIGHT OUTER includes ALL right rows."}
+    ],
+    "confusedConcepts": [
+      {"conceptA": "INNER JOIN", "conceptB": "OUTER JOIN", "difference": "INNER: only matching rows. OUTER: all rows from one or both sides, NULLs for non-matches.", "howToRemember": "INNER = only those invited who showed up. OUTER = everyone invited even if they didn't show."},
+      {"conceptA": "UNION", "conceptB": "JOIN", "difference": "UNION combines rows vertically (stacks results). JOIN combines columns horizontally (merges tables).", "howToRemember": "UNION = stacking papers on top of each other. JOIN = stapling papers side by side."},
+      {"conceptA": "CROSS JOIN", "conceptB": "NATURAL JOIN", "difference": "CROSS: every possible pair (no condition). NATURAL: automatic match on same-named columns.", "howToRemember": "CROSS = blind matching everyone. NATURAL = matching by shared interests."}
+    ],
+    "quickRevision": [
+      {"topic": "Join Types", "keyPoints": ["INNER: only matches (default)", "LEFT OUTER: all left + matching right", "RIGHT OUTER: all right + matching left", "FULL OUTER: all from both sides", "CROSS: cartesian product", "NATURAL: auto-match same columns"]},
+      {"topic": "Set Operations", "keyPoints": ["UNION: combine, remove duplicates", "UNION ALL: combine, keep duplicates", "INTERSECT: common rows only", "EXCEPT/MINUS: in first but not second"]},
+      {"topic": "Key Rules", "keyPoints": ["UNION needs same column count & types", "Set difference is NOT commutative", "SEMI JOIN is not standard SQL", "INNER JOIN is SQL Server default"]}
+    ],
+    "totalQuestions": 15
+  }
+]
